@@ -1,7 +1,7 @@
 import Navbar from "./Components/Navbar";
 import "./App.css";
 import AllRoutes from "./Components/Routes/AllRoutes";
-import Products from "./Components/Products";
+import { useState, useEffect } from "react";
 
 function App() {
   const [menu, setmenu] = useState(false);

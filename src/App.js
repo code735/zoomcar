@@ -1,24 +1,22 @@
+<<<<<<< HEAD
+import Navbar from "./Components/Navbar";
+import "./App.css";
+import AllRoutes from "./Components/Routes/AllRoutes";
+import { useState, useEffect } from "react";
+import Slider from "./Components/Slider";
+=======
 import logo from './logo.svg';
 import './App.css';
 // Commit branch
+>>>>>>> 984f4935923a16ffcec300d70ea93a57e6c34878
 
 function App() {
+  const [menu, setmenu] = useState(false);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Slider setmenu={setmenu} menu={menu} />
+      <Navbar setmenu={setmenu} menu={menu} />
+      <AllRoutes />
     </div>
   );
 }

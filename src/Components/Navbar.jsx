@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '../images/zoomcar_logo.png';
+import { Link } from 'react-router-dom';
 
 export default function Navbar({menu,setmenu}) {
 
@@ -30,9 +31,11 @@ export default function Navbar({menu,setmenu}) {
                 }} style={{cursor:"pointer"}}>
                 <i style={{color:"white",fontSize:"1.5rem"}} class="bi bi-list"></i>
                 </div>
-                <div className="logo" style={{width:"180px"}}>
-                    <img src="https://www.zoomcar.com/blog/wp-content/uploads/2020/03/footer-logo.png" alt="" />
-                </div>
+                <Link to="/">
+                    <div className="logo" style={{width:"180px"}}>
+                        <img src="https://www.zoomcar.com/blog/wp-content/uploads/2020/03/footer-logo.png" alt="" />
+                    </div>
+                </Link>
             </div>  
 
             {/* become A Host and Sign in Sign Up */}

@@ -1,7 +1,8 @@
 import React from 'react'
 import logo from '../images/zoomcar_logo.png';
 
-export default function Navbar() {
+export default function Navbar({menu,setmenu}) {
+
   return (
     <div>
         <div className='nav' style={{
@@ -19,7 +20,14 @@ export default function Navbar() {
                 alignItems:"center",
                 gap:"20px"
                 }}>
-                <div className="hamburger" style={{cursor:"pointer"}}>
+                <div className="hamburger" onClick={()=>{
+                    if(menu){
+                        setmenu(false);
+                    }
+                    else{
+                        setmenu(true);
+                    }
+                }} style={{cursor:"pointer"}}>
                 <i style={{color:"white",fontSize:"1.5rem"}} class="bi bi-list"></i>
                 </div>
                 <div className="logo" style={{width:"180px"}}>
@@ -54,10 +62,10 @@ export default function Navbar() {
                         display:"flex",
                         alignItems:"center",
                         gap:'10px',
-                        fontWeight:"bold"
+                        fontWeight:"bold",
+                        paddingRight:"20px"
                     }}>
-                        <p style={{margin:"0"}}>SignUp/SignIn</p>
-                        <i style={{fontSize:"1.5rem"}} class="bi bi-person-circle"></i>
+                        <p style={{margin:"0",fontSize:"1.1rem"}}>Login/Signup</p>
                     </div>
                 </div>
             </div>

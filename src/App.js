@@ -1,16 +1,16 @@
+<<<<<<< HEAD
 import Navbar from "./Components/Navbar";
 import "./App.css";
-import Hero from "./Components/Hero";
 import AllRoutes from "./Components/Routes/AllRoutes";
-import Products from "./Components/ProductsPage/Products";
+import Products from "./Components/Products";
 
 function App() {
+  const [menu, setmenu] = useState(false);
   return (
     <div className="App">
-      {/* <Navbar />
-      <Hero /> */}
-      {/* <AllRoutes /> */}
-      <Products />
+      <Slider setmenu={setmenu} menu={menu} />
+      <Navbar setmenu={setmenu} menu={menu} />
+      <AllRoutes />
     </div>
   );
 }

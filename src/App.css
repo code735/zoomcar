@@ -23,6 +23,13 @@ a {
   background-size: cover;
 }
 
+/* Slider Menu */
+.menu li {
+  padding: 10px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 /* 720px devices */
 
@@ -44,5 +51,17 @@ a {
 
   .signup {
     display: none;
+  }
+
+  .hero_section h1 {
+    font-size: 20px !important;
+  }
+
+  .hero_section h3 {
+    font-size: 16px !important;
+  }
+
+  .hero_section_text {
+    width: 85% !important;
   }
 }

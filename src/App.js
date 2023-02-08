@@ -1,16 +1,16 @@
 import Navbar from "./Components/Navbar";
 import "./App.css";
-import Hero from "./Components/Hero";
 import AllRoutes from "./Components/Routes/AllRoutes";
-import Products from "./Components/Products";
+import { useState, useEffect } from "react";
+import Slider from "./Components/Slider";
 
 function App() {
+  const [menu, setmenu] = useState(false);
   return (
     <div className="App">
-      {/* <Navbar />
-      <Hero /> */}
-      {/* <AllRoutes /> */}
-      <Products />
+      <Slider setmenu={setmenu} menu={menu} />
+      <Navbar setmenu={setmenu} menu={menu} />
+      <AllRoutes />
     </div>
   );
 }

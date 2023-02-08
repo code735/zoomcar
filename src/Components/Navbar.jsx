@@ -8,7 +8,7 @@ export default function Navbar() {
             display:"flex",
             justifyContent:"space-between",
             alignItems:"center",
-            padding:"20px"
+            padding:"10px"
             }}>
 
             {/* Logo And Hamburger*/}
@@ -19,10 +19,10 @@ export default function Navbar() {
                 alignItems:"center",
                 gap:"20px"
                 }}>
-                <div className="hamburger">
-                <i style={{color:"white",fontSize:"2rem"}} class="bi bi-list"></i>
+                <div className="hamburger" style={{cursor:"pointer"}}>
+                <i style={{color:"white",fontSize:"1.5rem"}} class="bi bi-list"></i>
                 </div>
-                <div className="logo" style={{width:"150px"}}>
+                <div className="logo" style={{width:"180px"}}>
                     <img src="https://www.zoomcar.com/blog/wp-content/uploads/2020/03/footer-logo.png" alt="" />
                 </div>
             </div>  
@@ -38,12 +38,13 @@ export default function Navbar() {
                         display:"flex",
                         justifyContent:"space-around",
                         alignItems:"center",
-                        gap:"20px",
+                        gap:"10px",
                         background:"white",
-                        padding:"5px"
+                        padding:"10px 15px",
+                        borderRadius:"30px"
                         }}>
-                        <img src={logo} style={{width:"30px"}} alt="" />
-                        <p style={{fontWeight:"bold"}}>Become a Host</p>
+                        <img src={logo} style={{width:"24px"}} alt="" />
+                        <p style={{fontSize:"1.1rem",margin:"0"}}>Become a Host</p>
                     </div>
                 </div>
 
@@ -52,10 +53,11 @@ export default function Navbar() {
                         color:"white",
                         display:"flex",
                         alignItems:"center",
-                        gap:'5px'
+                        gap:'10px',
+                        fontWeight:"bold"
                     }}>
-                        <i class="bi bi-person-circle"></i>
-                        <p>SignUp/SignIn</p>
+                        <p style={{margin:"0"}}>SignUp/SignIn</p>
+                        <i style={{fontSize:"1.5rem"}} class="bi bi-person-circle"></i>
                     </div>
                 </div>
             </div>

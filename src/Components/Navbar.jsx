@@ -50,9 +50,9 @@ export default function Navbar({menu,setmenu}) {
                         background:"white",
                         padding:"10px 15px",
                         borderRadius:"30px"
-                        }}>
+                        }} className="host_btn">
                         <img src={logo} style={{width:"24px"}} alt="" />
-                        <p style={{fontSize:"1.1rem",margin:"0"}}>Become a Host</p>
+                        <p className='become_host_txt' style={{fontSize:"1.1rem",margin:"0"}}>Become a Host</p>
                     </div>
                 </div>
 

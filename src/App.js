@@ -2,7 +2,7 @@ import Navbar from "./Components/Navbar";
 import "./App.css";
 import Hero from "./Components/Hero";
 import AllRoutes from "./Components/Routes/AllRoutes";
-import Products from "./Components/Products";
+import Products from "./Components/ProductsPage/Products";
 
 function App() {
   return (

@@ -1,4 +1,3 @@
-import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import Navbar from "./Components/Navbar";
 import "./App.css";
 import Hero from "./Components/Hero";

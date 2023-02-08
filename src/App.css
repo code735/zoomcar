@@ -18,6 +18,31 @@ a {
 }
 
 /* Hero Section */
-.hero_section_text {
-  background: url("https://img.freepik.com/premium-photo/happy-asian-family-enjoying-beach-trip-with-their-favorite-car-parents-children-are-traveling_532405-105.jpg?w=2000");
+.hero_section {
+  background: url("https://www.zoomcar.com/img/hero-banner-web.png");
+  background-size: cover;
+}
+
+
+/* 720px devices */
+
+@media only screen and (max-width:720px) {
+  .nav {
+    background: transparent;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .hero_section {
+    padding-top: 15% !important;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .signup {
+    display: none;
+  }
 }

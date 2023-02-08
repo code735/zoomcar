@@ -8,11 +8,11 @@ import MainContextProvider from "./Components/Context/MainContextProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <MainContextProvider>
-    <BrowserRouter>
+  // <MainContextProvider>
+    // <BrowserRouter>
       <App />
-    </BrowserRouter>
-  </MainContextProvider>
+    // </BrowserRouter>
+  // </MainContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

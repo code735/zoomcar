@@ -3,6 +3,7 @@ import Products from "../ProductsPage/Products";
 import Homepage from "../Homepage";
 import ProductDetails from "../ProductDetails";
 import PrivateRoute from "./PrivateRoute";
+import Payment from "../Payment";
 
 export default function AllRoutes() {
   return (
@@ -17,7 +18,7 @@ export default function AllRoutes() {
           </PrivateRoute>
         }
       />
-      {/* <Route path="/payment" element={<Payment />} /> */}
+      <Route path="/payment" element={<Payment />} />
     </Routes>
   );
 }

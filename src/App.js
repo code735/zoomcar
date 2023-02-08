@@ -1,9 +1,8 @@
 import Navbar from "./Components/Navbar";
 import "./App.css";
 import AllRoutes from "./Components/Routes/AllRoutes";
-import Products from "./Components/ProductsPage/Products";
+import { useState, useEffect } from "react";
 import Slider from "./Components/Slider";
-import { useState } from "react";
 
 function App() {
   const [menu, setmenu] = useState(false);

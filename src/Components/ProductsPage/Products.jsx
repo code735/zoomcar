@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import FilterMenu from "./FilterMenu";
+import ProductCSS from "./Products.module.css";
+import { Link } from "react-router-dom";
 
 export default function Products() {
   let [productData, setProductData] = useState([]);
@@ -13,8 +16,19 @@ export default function Products() {
   }, []);
 
   return (
-    <section id="productSection" className="bg-light">
-      <div></div>
+    <section
+    
+      id="productSection"
+      className={`bg-light d-flex ${ProductCSS.mainContainer}`}
+    >
+      <div>
+        
+        <Link to="/payment"><button>To Payment</button></Link>
+      </div>
+      <div className="filterMenu">
+        <FilterMenu />
+      </div>
+
       <div>
         <div className="d-flex flex-row">
           <div className="nameCity border border-success rounded">

@@ -32,7 +32,6 @@ a {
 }
 
 /* 720px devices */
-
 @media only screen and (max-width:720px) {
   .nav {
     background: transparent;
@@ -63,5 +62,40 @@ a {
 
   .hero_section_text {
     width: 85% !important;
+  }
+
+  .become_host_txt {
+    display: none;
+  }
+
+  .host_btn {
+    padding: 10px !important;
+  }
+
+  .slider_content {
+    width: 80vw !important;
+  }
+
+  .empty_area {
+    width: 30vw !important;
+  }
+}
+
+/* 480px devices */
+@media only screen and (max-width:480px) {
+  .hero_section {
+    padding-top: 25% !important;
+  }
+
+  .hero_section h1 {
+    font-size: 14px !important;
+  }
+
+  .hero_section h3 {
+    font-size: 12px !important;
+  }
+
+  .hero_section_text {
+    width: 100% !important;
   }
 }

@@ -29,7 +29,9 @@ const styles = {
         <div style={{
             background:"white",
             width:"30vw"
-            }}>
+            }}
+            className="slider_content"
+            >
                 <ul style={{listStyle:"none",padding:"0"}}>
                     <li style={{
                         padding: "15px 20px",
@@ -106,7 +108,7 @@ const styles = {
                     <li></li>
                 </ul>
         </div>
-        <div style={{width:"70vw",height:"100%"}} onClick={()=>{setmenu(false)}}></div>
+        <div style={{width:"70vw",height:"100%"}} onClick={()=>{setmenu(false)}} className="empty_area"></div>
     </div>
   )
 }

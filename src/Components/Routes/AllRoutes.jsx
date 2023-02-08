@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Products from "../Products";
+import Products from "../ProductsPage/Products";
 import Homepage from "../Homepage";
 import ProductDetails from "../ProductDetails";
 import PrivateRoute from "./PrivateRoute";

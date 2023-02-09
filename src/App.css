@@ -11,6 +11,9 @@ a {
   text-decoration: none;
 }
 
+p {
+  margin: 0;
+}
 
 /* NavBar Component*/
 .nav {
@@ -19,8 +22,11 @@ a {
 
 /* Hero Section */
 .hero_section {
-  background: url("https://www.zoomcar.com/img/hero-banner-web.png");
+  background: url(https://www.zoomcar.com/img/hero-banner-web.png);
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  gap: 43px;
 }
 
 /* Slider Menu */
@@ -31,8 +37,35 @@ a {
   align-items: center;
 }
 
+.round_trip {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  width: 50%;
+  padding: 5px;
+}
+
+.plane_trip {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  width: 50%;
+  padding: 5px;
+}
+
+.find_cars_btn {
+  width: 100%;
+}
+
+.trip {
+  width: 100%;
+}
+
+.find-cars {
+  width: 30%;
+  margin: auto;
+}
+
 /* 720px devices */
-@media only screen and (max-width:720px) {
+@media only screen and (max-width:768px) {
   .nav {
     background: transparent;
     position: fixed;
@@ -79,11 +112,16 @@ a {
   .empty_area {
     width: 30vw !important;
   }
+
+  .find-cars {
+    width: 80%;
+  }
 }
 
 /* 480px devices */
 @media only screen and (max-width:480px) {
   .hero_section {
+    padding: 20px !important;
     padding-top: 25% !important;
   }
 
@@ -97,5 +135,17 @@ a {
 
   .hero_section_text {
     width: 100% !important;
+  }
+
+  .round_trip {
+    padding: 5px 0;
+  }
+
+  .plane_trip {
+    padding: 5px 0;
+  }
+
+  .find-cars {
+    width: 100%;
   }
 }

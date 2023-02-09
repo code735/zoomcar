@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import FIndcars from './FIndcars'
 
 export default function Hero() {
   return (
@@ -20,10 +21,8 @@ export default function Hero() {
             <h3 style={{fontSize:"28px"}}>Book your drive now!</h3>
         </div>
 
-        <div>
-          <Link to="/products">
-            <button>Find Cars</button>
-          </Link>
+        <div className="find-cars">
+          <FIndcars/>
         </div>
     </div>
   )

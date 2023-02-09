@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import CurrentDateTime from './CurrentDateTime'
 
 export default function FIndcars() {
     let [trip, settrip] = useState(false)
@@ -18,6 +19,8 @@ export default function FIndcars() {
     }
 
         const [location, setLocation] = useState({});
+        let [city,setcity] = useState("Mumbai");
+        let [addr,setaddress] = useState("226Q+3PM, Diwale Village, Sector 14, CBD Belapur, Navi Mumbai, Maharashtra 400614, India");
 
         const getLocation = () => {
         if (navigator.geolocation) {
@@ -51,6 +54,8 @@ export default function FIndcars() {
               .then((response) => response.json())
               .then((data) => {
                 console.log(data);
+                setcity(data.address.city);
+                setaddress(data.display_name);
               })
               .catch((error) => {
                 console.error(error);
@@ -63,7 +68,8 @@ export default function FIndcars() {
         flexDirection:"column",
         alignItems:"center",
         margin:"20px 0",
-        fontSize:"14px"
+        fontSize:"14px",
+        gap:'10px'
     }}>
         <div style={{
             display:"flex",
@@ -89,22 +95,33 @@ export default function FIndcars() {
         {/* Trip Location */}
         <div className="trip_location" onClick={getLocation} style={{display:"flex",alignItems:"center",background:"white",width:"100%",borderRadius:"5px"}}>
             <i class="bi bi-dot" style={{fontSize:"2rem",color:"#10a310"}}></i>
-            <p>
-            Mumbai
+            <p style={
+                {
+                    display: "block",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                    maxHeight: "1.6em"
+                }
+            }>
+            {city}
             <i class="bi bi-dot" style={{fontSize:"1rem",color:"#10a310"}}></i>   
-            226Q+3PM, Diwale Village, Sector 14, CBD Belapur, Navi Mumbai, Maharashtra 400614, India</p>
-            {
-                console.log(location)
-            }
+            {addr}
+            </p>
         </div>
 
         {/* trip dates */}
-        <div className="trip_date">
-
+        <div className="trip_date" style={{
+            width:"100%",
+            background:"white",
+            borderRadius:"5px",
+            padding:'12px'            
+        }}>
+            <CurrentDateTime/>
         </div>
             
         <Link to="/products" className='find_cars_btn'>
-            <button style={{width:"100%",padding:"14px",border:'none',borderRadius:"5px"}}>Find Cars</button>
+            <button style={{width:"100%",padding:"14px",border:'none',borderRadius:"5px",outline:"none",background:"#10a310",color:"white"}}>Find Cars</button>
         </Link>
     </div>
   )

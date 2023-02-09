@@ -8,10 +8,9 @@ function App() {
   const [menu, setmenu] = useState(false);
   return (
     <div className="App">
-      {/* <Slider setmenu={setmenu} menu={menu} />
+      <Slider setmenu={setmenu} menu={menu} />
       <Navbar setmenu={setmenu} menu={menu} />
-      <AllRoutes /> */}
-      <Products />
+      <AllRoutes />
     </div>
   );
 }

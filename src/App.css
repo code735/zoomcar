@@ -22,8 +22,11 @@ p {
 
 /* Hero Section */
 .hero_section {
-  background: url("https://www.zoomcar.com/img/hero-banner-web.png");
+  background: url(https://www.zoomcar.com/img/hero-banner-web.png);
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  gap: 43px;
 }
 
 /* Slider Menu */
@@ -57,7 +60,7 @@ p {
 }
 
 .find-cars {
-  width: 40%;
+  width: 30%;
   margin: auto;
 }
 

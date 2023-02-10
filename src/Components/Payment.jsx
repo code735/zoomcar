@@ -1,20 +1,42 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 function Payment(props) {
-    let [payment, setPayment] = useState(true);
-    let aStyle ={
-        display: "flex",
+  let [Gpayment, setgPayment] = useState(true);
+  let [ppayment, setpPayment] = useState(true);
+  let [patpayment, setpatPayment] = useState(true);
+  let [carData, setCarData] = useState([]);
+  let [displayPayment, setdisplayPayment] = useState(true);
+  let [displayPayment1, setdisplayPayment1] = useState(true);
+  const getData = (url) => {
+    return fetch(url).then((res) => res.json());
+  };
+
+  const fetchData = async () => {
+    try {
+      let data = await getData(
+        `https://api-zoom-car-clone.cyclic.app/cards?_sort&`
+      );
+      console.log(...data);
+      setCarData(...data);
+    } catch (err) {
+      console.log(err);
     }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+  // console.log(carData);
   return (
-    <div style={{ display: "flex", gap: "200px", margin: "50px" }}>
-      <div>
+    <div style={{ display: "flex", gap: "20px", margin: "50px" }}>
+      <div style={{ width: "60%" }}>
         <h1 style={{ fontSize: "22px" }}>Select a Payment method</h1>
         <div
           className="Payment-page-Container"
           style={{
             display: "flex",
             boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-            width: "125%",
+            width: "100%",
           }}
         >
           <section
@@ -30,47 +52,87 @@ function Payment(props) {
               >
                 <b>OTHER PAYMENT OPTION</b>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  gap: "25px",
-                  borderBottom: "1px solid #cccccc",
-                  paddingBottom: "10px",
-                  alignItems: "center",
-                }}
-              >
-                <div style={{ width: "35px" }}>
-                  <img
-                    src="https://zoomcar-assets.zoomcar.com/images/original/9fcb8335a89265849f23225858489f2a9ce8e121.png?1584453574"
-                    alt=""
-                  />
-                </div>
-                <div>
-                  <div>UPI</div>
-                  <div style={{ color: "#666666" }}>
-                    Google Pay, PhonePe, BHIM UPI
+              <div style={{ borderBottom: "1px solid #cccccc" }}>
+                <div
+                  className="UPI-DIV"
+                  style={{
+                    display: "flex",
+                    gap: "25px",
+                    paddingBottom: "10px",
+                    alignItems: "center",
+                    cursor: "pointer",
+                    marginBottom: "4px",
+                  }}
+                  onClick={() => {
+                    if (displayPayment) {
+                      document.querySelector(".Right-Section1").style.display =
+                        "block";
+                      document.querySelector(".Right-Section2").style.display =
+                        "none";
+                      document.querySelector(".UPI-DIV").style.background =
+                        "whitesmoke";
+                      document.querySelector(".CARD-DIV").style.background =
+                        "none";
+                      setdisplayPayment(false);
+                      setdisplayPayment1(true);
+                    } else {
+                      setdisplayPayment(true);
+                    }
+                  }}
+                >
+                  <div style={{ width: "35px" }}>
+                    <img
+                      src="https://zoomcar-assets.zoomcar.com/images/original/9fcb8335a89265849f23225858489f2a9ce8e121.png?1584453574"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <div>UPI</div>
+                    <div style={{ color: "#666666" }}>
+                      Google Pay, PhonePe, BHIM UPI
+                    </div>
                   </div>
                 </div>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  gap: "25px",
-                  borderBottom: "1px solid #cccccc",
-                  paddingBottom: "10px",
-                  alignItems: "center",
-                }}
-              >
-                <div style={{ width: "35px" }}>
-                  <img
-                    src="https://zoomcar-assets.zoomcar.com/images/original/97f051d76793fffe5ab182ffa58b8eb47c5ba0cf.png?1584453494"
-                    alt=""
-                  />
-                </div>
-                <div>
-                  <div>Credit / Debit / ATM Card</div>
-                  <div style={{ color: "#666666" }}>
-                    All major card providers are supported
+              <div style={{ borderBottom: "1px solid #cccccc" }}>
+                <div
+                  className="CARD-DIV"
+                  style={{
+                    display: "flex",
+                    gap: "25px",
+                    paddingBottom: "10px",
+                    alignItems: "center",
+                    cursor: "pointer",
+                    marginBottom: "4px",
+                  }}
+                  onClick={() => {
+                    if (displayPayment1) {
+                      document.querySelector(".Right-Section2").style.display =
+                        "block";
+                      document.querySelector(".Right-Section1").style.display =
+                        "none";
+                      document.querySelector(".CARD-DIV").style.background =
+                        "whitesmoke";
+                      document.querySelector(".UPI-DIV").style.background =
+                        "none";
+                      setdisplayPayment1(false);
+                      setdisplayPayment(true);
+                    } else {
+                      setdisplayPayment1(true);
+                    }
+                  }}
+                >
+                  <div style={{ width: "35px" }}>
+                    <img
+                      src="https://zoomcar-assets.zoomcar.com/images/original/97f051d76793fffe5ab182ffa58b8eb47c5ba0cf.png?1584453494"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <div>Credit / Debit / ATM Card</div>
+                    <div style={{ color: "#666666" }}>
+                      All major card providers are supported
+                    </div>
                   </div>
                 </div>
               </div>
@@ -115,7 +177,7 @@ function Payment(props) {
             </div>
           </section>
           <section
-            className="Right-Section"
+            className="Right-Section1"
             style={{ padding: "25px", width: "50%" }}
           >
             <div className="payment-method-And-Scan" style={{ width: "100%" }}>
@@ -147,17 +209,53 @@ function Payment(props) {
                       width: "100%",
                       padding: "4px",
                       marginTop: "25px",
+                      marginBottom: "15px",
                     }}
                   >
                     <b>PREFERRED PAYMENT OPTIONS</b>
                   </div>
-                  <div>
+                  <div style={{ borderBottom: "1px solid #cccccc" }}>
                     <div
+                      className="Goggle-pay-div"
                       style={{
                         display: "flex",
                         gap: "20px",
-                        padding: "20px 20px 20px 0px",
-                        borderBottom: "1px solid #cccccc",
+                        padding: "10px 20px 10px 0px",
+                        margin: "10px 0px 10px 0px",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        {
+                          if (Gpayment) {
+                            document.querySelector(".Gsub-text").style.display =
+                              "flex";
+                            document.querySelector(
+                              ".Goggle-pay-div"
+                            ).style.background = "#f5f5f5";
+                            document.querySelector(".Psub-text").style.display =
+                              "none";
+                            document.querySelector(
+                              ".PhoenePe-pay-div"
+                            ).style.background = "none";
+                            document.querySelector(
+                              ".Patsub-text"
+                            ).style.display = "none";
+                            document.querySelector(
+                              ".Paytm-pay-div"
+                            ).style.background = "none";
+                            setgPayment(false);
+                            setpPayment(true);
+                            setpatPayment(true);
+                          } else {
+                            document.querySelector(".Gsub-text").style.display =
+                              "none";
+                            document.querySelector(
+                              ".Goggle-pay-div"
+                            ).style.background = "none";
+
+                            setgPayment(true);
+                          }
+                        }
                       }}
                     >
                       <div style={{ width: "30px", background: "#f5f5f5" }}>
@@ -166,33 +264,100 @@ function Payment(props) {
                           alt=""
                         />
                       </div>
-                      <div style={{ color: "#666666" }} className="text"onClick={()=>{
-                        { if(payment){
-                          document.querySelector(".sub-text").style.display="flex"
-                          setPayment(false)
-                        }
-                        else{
-                          document.querySelector(".sub-text").style.display="none"
-                          setPayment(true);
-                        }
-                          }
-                      }}>
+                      <div style={{ color: "#666666" }} className="text">
                         Google Pay
                       </div>
-                      
                     </div>
-                    <div className="sub-text" style={{display:"none"}} >
-                        <input type="text" />
-                        <button>VERIFY & PAY</button>
-                      </div>
-                  </div>
-                  <div>
                     <div
+                      className="Gsub-text"
+                      style={{
+                        display: "none",
+                        justifyContent: "space-between",
+                        gap: "10px",
+                        marginBottom: "25px",
+                      }}
+                    >
+                      <input className="InpurUPI1"
+                        type="text"
+                        placeholder="Enter Upi Id"
+                        style={{
+                          paddingLeft: "10px",
+                          height: "50px",
+                          width: "240px",
+                          outlineColor: "green",
+                          border: "1px solid #e0e0e0",
+                          borderRadius: "4px",
+                        }}
+                        onInput={() => {
+                          {
+                            let inputUPI = document.querySelector(".InpurUPI1").value;
+                           if(inputUPI!=""){
+                            document.querySelector(".submitBtn1").style.background = "green";
+                           }
+                           else{
+                            document.querySelector(".submitBtn1").style.background = "#e0e0e0";
+                           }
+                          
+                            }
+                        }}
+                      />
+                      <button
+                        className="submitBtn1"
+                        style={{
+                          width: "150px",
+                          border: "none",
+                          color: "white",
+                          background: "#e0e0e0",
+                          borderRadius: "4px",
+                        }}
+                      >
+                        VERIFY & PAY
+                      </button>
+                    </div>
+                  </div>
+                  <div style={{ borderBottom: "1px solid #cccccc" }}>
+                    <div
+                      className="PhoenePe-pay-div"
                       style={{
                         display: "flex",
                         gap: "20px",
-                        padding: "20px 20px 20px 0px",
-                        borderBottom: "1px solid #cccccc",
+                        padding: "10px 20px 10px 0px",
+                        margin: "10px 0px 10px 0px",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        {
+                          if (ppayment) {
+                            document.querySelector(".Psub-text").style.display =
+                              "flex";
+                            document.querySelector(".Gsub-text").style.display =
+                              "none";
+                            document.querySelector(
+                              ".PhoenePe-pay-div"
+                            ).style.background = "#f5f5f5";
+                            document.querySelector(
+                              ".Goggle-pay-div"
+                            ).style.background = "none";
+                            document.querySelector(
+                              ".Patsub-text"
+                            ).style.display = "none";
+                            document.querySelector(
+                              ".Paytm-pay-div"
+                            ).style.background = "none";
+
+                            setpPayment(false);
+                            setgPayment(true);
+                            setpatPayment(true);
+                          } else {
+                            document.querySelector(".Psub-text").style.display =
+                              "none";
+                            document.querySelector(
+                              ".PhoenePe-pay-div"
+                            ).style.background = "none";
+
+                            setpPayment(true);
+                          }
+                        }
                       }}
                     >
                       <div style={{ width: "30px", background: "#f5f5f5" }}>
@@ -204,15 +369,97 @@ function Payment(props) {
                       <div style={{ color: "#666666" }} className="text">
                         PhonePe
                       </div>
-                      <div className="sub-text"></div>
+                    </div>
+                    <div
+                      className="Psub-text"
+                      style={{
+                        display: "none",
+                        justifyContent: "space-between",
+                        gap: "10px",
+                        marginBottom: "25px",
+                      }}
+                    >
+                      <input
+                        type="text" className="InpurUPI2"
+                        placeholder="Enter Upi Id"
+                        style={{
+                          paddingLeft: "10px",
+                          height: "50px",
+                          width: "240px",
+                          outlineColor: "green",
+                          border: "1px solid #e0e0e0",
+                          borderRadius: "4px",
+                        }}
+                        onInput={() => {
+                          {
+                            let inputUPI = document.querySelector(".InpurUPI2").value;
+                            if(inputUPI!=""){
+                             document.querySelector(".submitBtn2").style.background = "green";
+                            }
+                            else{
+                             document.querySelector(".submitBtn2").style.background = "#e0e0e0";
+                            }
+                          }
+                        }}
+                      />
+                      <button
+                        className="submitBtn2"
+                        style={{
+                          width: "150px",
+                          border: "none",
+                          color: "white",
+                          background: "#e0e0e0",
+                          borderRadius: "4px",
+                        }}
+                      >
+                        VERIFY & PAY
+                      </button>
                     </div>
                   </div>
                   <div>
                     <div
+                      className="Paytm-pay-div"
                       style={{
                         display: "flex",
                         gap: "20px",
-                        padding: "20px 20px 20px 0px",
+                        padding: "10px 20px 10px 0px",
+                        margin: "10px 0px 10px 0px",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        {
+                          if (patpayment) {
+                            document.querySelector(
+                              ".Paytm-pay-div"
+                            ).style.background = "#f5f5f5";
+                            document.querySelector(".Gsub-text").style.display =
+                              "none";
+                            document.querySelector(".Psub-text").style.display =
+                              "none";
+                            document.querySelector(
+                              ".Patsub-text"
+                            ).style.display = "flex";
+                            document.querySelector(
+                              ".PhoenePe-pay-div"
+                            ).style.background = "none";
+                            document.querySelector(
+                              ".Goggle-pay-div"
+                            ).style.background = "none";
+
+                            setpatPayment(false);
+                            setgPayment(true);
+                            setpPayment(true);
+                          } else {
+                            document.querySelector(
+                              ".Patsub-text"
+                            ).style.display = "none";
+                            document.querySelector(
+                              ".Paytm-pay-div"
+                            ).style.background = "none";
+
+                            setpatPayment(true);
+                          }
+                        }
                       }}
                     >
                       <div style={{ width: "30px", background: "#f5f5f5" }}>
@@ -224,12 +471,221 @@ function Payment(props) {
                       <div style={{ color: "#666666" }} className="text">
                         Paytm UPI
                       </div>
-                      <div className="sub-text"></div>
+                    </div>
+                    <div
+                      className="Patsub-text"
+                      style={{
+                        display: "none",
+                        justifyContent: "space-between",
+                        gap: "10px",
+                        marginBottom: "25px",
+                      }}
+                    >
+                      <input
+                        type="text" className="InpurUPI3"
+                        placeholder="Enter Upi Id"
+                        style={{
+                          paddingLeft: "10px",
+                          height: "50px",
+                          width: "240px",
+                          outlineColor: "green",
+                          border: "1px solid #e0e0e0",
+                          borderRadius: "4px",
+                        }}
+                        onInput={() => {
+                          {
+                            let inputUPI = document.querySelector(".InpurUPI3").value;
+                           if(inputUPI!=""){
+                            document.querySelector(".submitBtn3").style.background = "green";
+                           }
+                           else{
+                            document.querySelector(".submitBtn3").style.background = "#e0e0e0";
+                           }
+                          }
+                        }}
+                      />
+                      <button
+                        className="submitBtn3"
+                        style={{
+                          width: "150px",
+                          border: "none",
+                          color: "white",
+                          background: "#e0e0e0",
+                          borderRadius: "4px",
+                        }}
+                      >
+                        VERIFY & PAY
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </section>
+          <section
+            className="Right-Section2"
+            style={{ padding: "25px", width: "50%", display: "none" }}
+          >
+            <div className="payment-method-And-Scan" style={{ width: "100%" }}>
+              <div className="payment-method">
+                <div
+                  className="header"
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <div className="content">
+                    <div className="head-payment">
+                      <b>Enter Card Details</b>
+                    </div>
+                    <div style={{ color: "#666666" }} className="Head-Amount">
+                      Amount:₹3014.0
+                    </div>
+                  </div>
+                  <div className="logo" style={{ width: "40px" }}>
+                    <img
+                      src="https://www.zoomcar.com/build/760ee3019ff287f2caed7e40c92b1ca5.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+
+                <div className="card-payment">
+                  <div
+                    className="inputbox-card"
+                    style={{ margin: "40px 0 40px 0" }}
+                  >
+                    <input className="CardNumber"
+                      type="text"
+                      placeholder="Card Number"
+                      style={{
+                        width: "100%",
+                        height: "60px",
+                        outlineColor: "green",
+                        border: "1px solid #e0e0e0",
+                        borderRadius: "5px",
+                        paddingLeft: "10px",
+                      }}
+                      onInput={()=>{
+                        {let cardNumber = document.querySelector(".CardNumber").value;
+                          let expiredate =  document.querySelector(".ExpireDate").value;
+                          let CVV =  document.querySelector(".CVV").value;
+                          if(cardNumber!="" && expiredate!="" && CVV!=""){
+                            document.querySelector(".SubmitPayment").style.background="green";
+                            document.querySelector(".SubmitPayment").style.color="white";
+                          }
+                          else{
+                            document.querySelector(".SubmitPayment").style.background="#e0e0e0";
+                          }
+                      }
+                  }}
+                    />
+                  </div>
+                  <div
+                    className="other-detail-card"
+                    style={{
+                      display: "flex",
+                      gap: "15px",
+                      margin: "40px 0 40px 0",
+                    }}
+                  >
+                    <div className="expire-and-cvv" style={{ width: "50%" }}>
+                      <input className="ExpireDate"
+                        placeholder="Expiry(MM/YY)"
+                        style={{
+                          width: "100%",
+                          height: "60px",
+                          outlineColor: "green",
+                          border: "1px solid #e0e0e0",
+                          borderRadius: "5px",
+                          paddingLeft: "10px",
+                        }}
+                        onInput={()=>{
+                          {let cardNumber = document.querySelector(".CardNumber").value;
+                            let expiredate =  document.querySelector(".ExpireDate").value;
+                            let CVV =  document.querySelector(".CVV").value;
+                            if(cardNumber!="" && expiredate!="" && CVV!=""){
+                              document.querySelector(".SubmitPayment").style.background="green";
+                              document.querySelector(".SubmitPayment").style.color="white";
+                            }
+                            else{
+                              document.querySelector(".SubmitPayment").style.background="#e0e0e0";
+                            }
+                        }
+                    }}
+                      />
+                    </div>
+                    <div className="expire-and-cvv" style={{ width: "50%" }}>
+                      <input className="CVV"
+                        type="text"
+                        placeholder="CVV"
+                        style={{
+                          width: "100%",
+                          height: "60px",
+                          outlineColor: "green",
+                          border: "1px solid #e0e0e0",
+                          borderRadius: "5px",
+                          paddingLeft: "10px",
+                        }}
+                        onInput={()=>{
+                          {let cardNumber = document.querySelector(".CardNumber").value;
+                            let expiredate =  document.querySelector(".ExpireDate").value;
+                            let CVV =  document.querySelector(".CVV").value;
+                            if(cardNumber!="" && expiredate!="" && CVV!=""){
+                              document.querySelector(".SubmitPayment").style.background="green";
+                              document.querySelector(".SubmitPayment").style.color="white";
+                            }
+                            else{
+                              document.querySelector(".SubmitPayment").style.background="#e0e0e0";
+                            }
+                        }
+                    }}
+                      />
+                    </div>
+                  </div>
+                  <div className="save-card" style={{ marginBottom: "30px" }}>
+                    <input type="checkbox" />
+                    <span>Securely save card details</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <footer
+              style={{
+                boxShadow:
+                  "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
+                position: "relative",
+                width: "118%",
+                height: "20%",
+                top: "4px",
+                right: "23px",
+                marginBottom: "19px",
+              }}
+            >
+              <div
+                className="payButton"
+                style={{
+                  display: "flex",
+                  justifyContent: "end",
+                  alignItems: "center",
+                  height: "100%",
+                }}
+              >
+                <button className="SubmitPayment"
+                  style={{
+                    padding: "10px 40px 10px 40px",
+                    marginRight: "10px",
+                    borderRadius: "5px",
+                    border: "none",
+                    boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
+                    color: "#b2b2b2",
+                    fontWeight: "500",
+                    background: "#e0e0e0",
+                  }}
+                 
+                >
+                  PAY ₹39515
+                </button>
+              </div>
+            </footer>
           </section>
         </div>
       </div>
@@ -248,7 +704,6 @@ function Payment(props) {
               style={{
                 background: "#f5f5f5",
                 padding: "10px",
-                paddingBottom: "40px",
               }}
             >
               <div className="Car-Name" style={{ marginBottom: "5px" }}>
@@ -278,10 +733,11 @@ function Payment(props) {
                   className="car-img"
                   style={{
                     width: "200px",
-                    position: "absolute",
-                    right: "50px",
-                    top: "185px",
+                    position: "relative",
+                    right: "-59px",
+                    top: "-41px",
                     overflow: "hidden",
+                    marginBottom: "-40px",
                   }}
                 >
                   <img
@@ -328,14 +784,15 @@ function Payment(props) {
                 <div
                   className="connecter"
                   style={{
-                    position: "absolute",
+                    position: "relative",
                     width: "2px",
                     height: "62px",
                     backgroundImage:
                       " linear-gradient(to bottom, #e6ffea, #fff3f0)",
-                    top: "324px",
-                    right: "470px",
+                    top: "-55px",
+                    right: "-12px",
                     overflow: "hidden",
+                    marginBottom: "-56px",
                   }}
                 ></div>
                 <div

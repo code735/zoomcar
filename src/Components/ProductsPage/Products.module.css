@@ -8,3 +8,56 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
+
+.nameCity ::before {
+  position: absolute;
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10a310;
+  display: inline-block;
+  border: 8px solid #e6ffea;
+  box-sizing: content-box;
+  left: 30%;
+}
+
+.nameCity,
+.timeBar {
+  border-color: #10a310 !important;
+}
+
+.nameCity p {
+  margin: 0.7rem 0rem 0.7rem 2.5rem;
+  font-size: 15px;
+}
+
+.timeBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+}
+
+.timeBar span i {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.timeBar div label {
+  font-size: 10px;
+  color: #1f1f1f;
+  opacity: 0.7;
+  font-weight: 600;
+}
+
+.timeBar div p {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.timeBar div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

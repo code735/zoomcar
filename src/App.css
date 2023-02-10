@@ -82,7 +82,6 @@ p {
   transition: all 0.5s ease;
 }
 
-
 /* 992px devices devices */
 @media (max-width: 992px) {
   .carouselItem {
@@ -91,7 +90,7 @@ p {
 }
 
 /* 768px devices devices */
-@media only screen and (max-width:768px) {
+@media only screen and (max-width: 768px) {
   .nav {
     background: transparent;
     position: fixed;
@@ -157,7 +156,7 @@ p {
 }
 
 /* 480px devices */
-@media only screen and (max-width:480px) {
+@media only screen and (max-width: 480px) {
   .hero_section {
     padding: 20px !important;
     padding-top: 25% !important;

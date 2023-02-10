@@ -28,7 +28,6 @@ export default function ProductCard({ productData }) {
         >
           <img style={{ height: "250px" }} src={url_large} alt="car" />
         </div>
-
         <div className={ProductCardCSS.productDetailContainer}>
           <div className={ProductCardCSS.ratingsAndOhter}>
             <div className={ProductCardCSS.ratingContainer}>
@@ -39,7 +38,6 @@ export default function ProductCard({ productData }) {
               />
               <p className={ProductCardCSS.ratingNumbers}>{rating.text}</p>
             </div>
-
             <div className={ProductCardCSS.arrowSign}>
               <img
                 style={{ width: "36px" }}
@@ -48,7 +46,6 @@ export default function ProductCard({ productData }) {
               />
             </div>
           </div>
-
           <h3
             style={{
               position: "absolute",
@@ -59,7 +56,6 @@ export default function ProductCard({ productData }) {
           >
             {name}
           </h3>
-
           <div className={ProductCardCSS.engineDetais}>
             <span>{accessories[0]}</span>
             <i className={`bi bi-dot ${ProductCardCSS.productCardDot}`}></i>
@@ -67,7 +63,6 @@ export default function ProductCard({ productData }) {
             <i className={`bi bi-dot ${ProductCardCSS.productCardDot}`}></i>
             <span>{accessories[2]}</span>
           </div>
-
           <div className={ProductCardCSS.priceAndDistance}>
             <h5>{payable_amount}</h5>
             <div>

@@ -37,7 +37,7 @@ function CurrentDateTime() {
     return (
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
         {dateTimeString}
-        <i class="bi bi-arrow-right"></i>
+        <i className="bi bi-arrow-right"></i>
         {laterDateTimeString}
       </div>
     );

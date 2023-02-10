@@ -7,9 +7,6 @@ function Payment(props) {
   let [carData, setCarData] = useState([]);
   let [displayPayment, setdisplayPayment] = useState(true);
   let [displayPayment1, setdisplayPayment1] = useState(true);
-  let [gogglePaysubmit, setgogglePaysubmit] = useState(false);
-  let [PhonepePaysubmit, setPhonepesubmit] = useState(false);
-  let [PaytmPaysubmit, setPaytmsubmit] = useState(false);
   const getData = (url) => {
     return fetch(url).then((res) => res.json());
   };

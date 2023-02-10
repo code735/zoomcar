@@ -14,15 +14,15 @@ function Payment(props) {
   const fetchData = async () => {
     try {
       let data = await getData(
-        `https://api-zoom-car-clone.cyclic.app/cards?_sort&`
+        `https://api-zoom-car-clone.cyclic.app/cards/1`
       );
-      console.log(...data);
-      setCarData(...data);
+      // console.log(...data);
+      // setCarData(data);
     } catch (err) {
       console.log(err);
     }
   };
-
+ 
   useEffect(() => {
     fetchData();
   }, []);
@@ -556,6 +556,8 @@ function Payment(props) {
                     <input className="CardNumber"
                       type="text"
                       placeholder="Card Number"
+                      maxLength={19}
+                      inputMode="numeric"
                       style={{
                         width: "100%",
                         height: "60px",
@@ -575,10 +577,24 @@ function Payment(props) {
                           else{
                             document.querySelector(".SubmitPayment").style.background="#e0e0e0";
                           }
+                         
                       }
+                      
+                  }}
+                  onKeyDown={()=>{
+                    {
+                      let cardNumber = document.querySelector(".CardNumber");
+                      cardNumber = cardNumber.value.split(' ').join('');
+
+                      let finalVal = cardNumber.match(/.{1,4}/g).join(' ');
+                      document.querySelector(".CardNumber").value = finalVal;
+
+
+                    }
                   }}
                     />
                   </div>
+  
                   <div
                     className="other-detail-card"
                     style={{
@@ -590,6 +606,8 @@ function Payment(props) {
                     <div className="expire-and-cvv" style={{ width: "50%" }}>
                       <input className="ExpireDate"
                         placeholder="Expiry(MM/YY)"
+                        maxLength={5}
+                      inputMode="numeric"
                         style={{
                           width: "100%",
                           height: "60px",
@@ -597,6 +615,7 @@ function Payment(props) {
                           border: "1px solid #e0e0e0",
                           borderRadius: "5px",
                           paddingLeft: "10px",
+                          
                         }}
                         onInput={()=>{
                           {let cardNumber = document.querySelector(".CardNumber").value;
@@ -611,12 +630,25 @@ function Payment(props) {
                             }
                         }
                     }}
+                    onKeyDown={()=>{
+                      {
+                        let expiredate = document.querySelector(".ExpireDate");
+                        expiredate = expiredate.value.split('/').join('');
+  
+                        let finalVal = expiredate.match(/.{1,2}/g).join('/');
+                        document.querySelector(".ExpireDate").value = finalVal;
+  
+  
+                      }
+                    }}
                       />
                     </div>
                     <div className="expire-and-cvv" style={{ width: "50%" }}>
                       <input className="CVV"
-                        type="text"
+                        type="password"
                         placeholder="CVV"
+                        maxLength={3}
+                      inputMode="numeric"
                         style={{
                           width: "100%",
                           height: "60px",
@@ -741,7 +773,7 @@ function Payment(props) {
                   }}
                 >
                   <img
-                    src="https://zoomcar-assets.zoomcar.com/photographs/original/13284dce101cd7020c977103e2cb5f33bee3b0e9.png?1663874479"
+                    src="https://zoomcar-assets.zoomcar.com/photographs/original/7f4a674aa51af027c8f0017fe823fb34e5d90a05.png?1663873067"
                     alt=""
                   />
                 </div>

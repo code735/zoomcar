@@ -5,7 +5,7 @@ export default function Slider({setmenu,menu}) {
 
 const styles = {
     show:{
-        position:"absolute",
+        position:"fixed",
         top:"0",
         background:"#0000007a",
         width:"100%",
@@ -14,7 +14,7 @@ const styles = {
         zIndex:"2"
     },
     hide:{
-        position:"absolute",
+        position:"fixed",
         top:"0",
         background:"#0000007a",
         width:"100%",

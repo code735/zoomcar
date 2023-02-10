@@ -7,6 +7,7 @@ import LocationPopUp from './LocationPopUp'
 export default function FIndcars() {
     let [trip, settrip] = useState(false)
     let [showloc,setshowloc] = useState(false);
+    let[locationLS,setLocationLS] = useState("");
 
     const styles = {
         gray:{
@@ -18,6 +19,10 @@ export default function FIndcars() {
             color:"#10a310",
         }
     }
+
+        useEffect(() => {
+            localStorage.setItem("locationLS", locationLS);
+        }, [locationLS]);
 
         const [location, setLocation] = useState({});
         let [city,setcity] = useState("Mumbai");
@@ -59,6 +64,7 @@ export default function FIndcars() {
               .then((data) => {
                 setcity(data.address.city);
                 setaddress(data.display_name);
+                setLocationLS(city+" . "+addr);
               })
               .catch((error) => {
                 console.error(error);

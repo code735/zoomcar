@@ -29,7 +29,7 @@ export default function Navbar({menu,setmenu}) {
                         setmenu(true);
                     }
                 }} style={{cursor:"pointer"}}>
-                <i style={{color:"white",fontSize:"1.5rem"}} class="bi bi-list"></i>
+                <i style={{color:"white",fontSize:"1.5rem"}} className="bi bi-list"></i>
                 </div>
                 <Link to="/">
                     <div className="logo" style={{width:"180px"}}>

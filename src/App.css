@@ -64,7 +64,32 @@ p {
   margin: auto;
 }
 
-/* 720px devices */
+/* Carousel Section */
+.carouselContainer {
+  overflow: hidden;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.carouselItem {
+  flex: 0 0 calc(100% / 3);
+  padding: 20px;
+  text-align: center;
+}
+
+.carouselInner {
+  display: flex;
+  transition: all 0.5s ease;
+}
+
+/* 992px devices devices */
+@media (max-width: 992px) {
+  .carouselItem {
+    flex: 0 0 calc(100% / 2);
+  }
+}
+
+/* 768px devices devices */
 @media only screen and (max-width: 768px) {
   .nav {
     background: transparent;
@@ -115,6 +140,18 @@ p {
 
   .find-cars {
     width: 80%;
+  }
+
+  .carouselItem {
+    flex: 0 0 100%;
+  }
+
+  .cars_scroll {
+    overflow: hidden;
+  }
+
+  .single_car {
+    width: 100vw;
   }
 }
 

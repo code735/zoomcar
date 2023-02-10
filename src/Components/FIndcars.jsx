@@ -2,10 +2,11 @@ import React from 'react'
 import { useState,useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import CurrentDateTime from './CurrentDateTime'
+import LocationPopUp from './LocationPopUp'
 
 export default function FIndcars() {
     let [trip, settrip] = useState(false)
-
+    let [showloc,setshowloc] = useState(false);
 
     const styles = {
         gray:{
@@ -37,6 +38,9 @@ export default function FIndcars() {
             console.error("Geolocation is not supported by this browser.");
             alert("Geolocation is not supported by this browser.");
         }
+
+
+        showloc ? setshowloc(false):setshowloc(true);
         };
 
         useEffect(() => {
@@ -53,7 +57,6 @@ export default function FIndcars() {
             fetch(API_ENDPOINT)
               .then((response) => response.json())
               .then((data) => {
-                console.log(data);
                 setcity(data.address.city);
                 setaddress(data.display_name);
               })
@@ -71,6 +74,7 @@ export default function FIndcars() {
         fontSize:"14px",
         gap:'10px'
     }}>
+
         <div style={{
             display:"flex",
             justifyContent:"center",
@@ -81,20 +85,20 @@ export default function FIndcars() {
             <div style={trip?styles.gray:styles.white} onClick={()=>{
                 settrip(false);
             }} className='round_trip'>
-                <i class="bi bi-arrow-left-right"></i>
+                <i className="bi bi-arrow-left-right"></i>
                 <p>Round Trip</p>
             </div>
             <div style={trip?styles.white:styles.gray} onClick={()=>{
                 settrip(true);
             }} className='plane_trip'>
-                <i class="bi bi-airplane"></i>
+                <i className="bi bi-airplane"></i>
                 <p>Aeroplane Round Trip</p>
             </div>
         </div>
 
         {/* Trip Location */}
         <div className="trip_location" onClick={getLocation} style={{display:"flex",alignItems:"center",background:"white",width:"100%",borderRadius:"5px"}}>
-            <i class="bi bi-dot" style={{fontSize:"2rem",color:"#10a310"}}></i>
+            <i className="bi bi-dot" style={{fontSize:"2rem",color:"#10a310"}}></i>
             <p style={
                 {
                     display: "block",
@@ -105,7 +109,7 @@ export default function FIndcars() {
                 }
             }>
             {city}
-            <i class="bi bi-dot" style={{fontSize:"1rem",color:"#10a310"}}></i>   
+            <i className="bi bi-dot" style={{fontSize:"1rem",color:"#10a310"}}></i>   
             {addr}
             </p>
         </div>

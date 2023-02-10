@@ -8,15 +8,24 @@ export default function FilterMenu() {
   let { sort, setSort, filter, setFilter } = useContext(MainContext);
 
   return (
-    <div className={`p-3 mt-3 border rounded shadow-sm bg-white`}>
+    <div className={`p-3 border rounded shadow-sm bg-white`}>
       <div className="d-flex justify-content-between">
         <p className="fs-5 fw-bold">Sort & Filter</p>
-        <p className="fw-bold" style={{ color: "#10a310", cursor: "pointer" }}>
+        <p
+          onClick={() => {
+            setSort("?_sort");
+            setFilter("");
+          }}
+          className="fw-bold"
+          style={{ color: "#10a310", cursor: "pointer" }}
+        >
           RESET
         </p>
       </div>
 
-      <p>Sort By</p>
+      <p style={{ fontWeight: "300" }} className="mt-3 mb-2">
+        Sort By
+      </p>
       <div className="sortMenu mb-1">
         <div className={`row mb-2 ${FilterCSS.gapGrid}`}>
           <div
@@ -82,49 +91,43 @@ export default function FilterMenu() {
         </div>
       </div>
 
-      <p className="mt-4">Car type</p>
+      <p style={{ fontWeight: "300" }} className="mt-4 mb-2">
+        Transmission
+      </p>
       <div className="sortMenu mb-1 mx-2">
         <div className={`row ${FilterCSS.gapGrid}`}>
           <div
             className={`border border-secondary rounded text-center col ${FilterCSS.Pevent}`}
-          >
-            <i style={{ fontSize: "18px", marginTop: "5px" }}>
-              <IoCarOutline />
-            </i>
-            <div className={FilterCSS["fs_11px"]}>Hatchback</div>
-          </div>
-          <div
-            className={`border border-secondary rounded text-center col ${FilterCSS.Pevent}`}
-          >
-            <i style={{ fontSize: "18px", marginTop: "5px" }}>
-              <IoCarSportOutline />
-            </i>
-            <div className={FilterCSS["fs_11px"]}>Sedan</div>
-          </div>
-          <div
-            className={`border border-secondary rounded text-center col ${FilterCSS.Pevent}`}
+            onClick={() => {
+              setFilter("&car_data.accessories.0=Manual");
+            }}
           >
             <img
-              style={{ width: "24px" }}
-              src="https://cdn-icons-png.flaticon.com/512/2207/2207521.png"
+              style={{ width: "24px", height: "24px" }}
+              src="https://zoomcar-assets.zoomcar.com/images/original/2aceee9e84a7bf79ae8928ace92944abbac907d4.png?1584455088"
               alt=""
             />
-            <div className={FilterCSS["fs_11px"]}>SUV</div>
+            <div className={FilterCSS["fs_11px"]}>Manual</div>
           </div>
           <div
             className={`border border-secondary rounded text-center col ${FilterCSS.Pevent}`}
+            onClick={() => {
+              setFilter("&car_data.accessories.0=Automatic");
+            }}
           >
             <img
-              style={{ width: "24px" }}
-              src="https://cdn-icons-png.flaticon.com/512/3324/3324498.png"
-              alt="car"
+              style={{ width: "24px", height: "24px" }}
+              src="https://zoomcar-assets.zoomcar.com/images/original/d21cb94565e451326a2c6a43a8d2f1066e228e7b.png?1584455072"
+              alt=""
             />
-            <div className={FilterCSS["fs_11px"]}>Best Rated</div>
+            <div className={FilterCSS["fs_11px"]}>Automatic</div>
           </div>
         </div>
       </div>
 
-      <p className="mt-4">Setats</p>
+      <p style={{ fontWeight: "300" }} className="mt-4 mb-2">
+        Setats
+      </p>
       <div className="sortMenu mb-1 mx-2">
         <div className={`row ${FilterCSS.gapGrid}`}>
           <div
@@ -165,7 +168,9 @@ export default function FilterMenu() {
         </div>
       </div>
 
-      <p className="mt-4">Fuel type</p>
+      <p style={{ fontWeight: "300" }} className="mt-4 mb-2">
+        Fuel type
+      </p>
       <div className="sortMenu mb-1 mx-2">
         <div className={`row ${FilterCSS.gapGrid}`}>
           <div
@@ -206,6 +211,36 @@ export default function FilterMenu() {
               alt=""
             />
             <div className={FilterCSS["fs_11px"]}>CNG</div>
+          </div>
+        </div>
+      </div>
+
+      <p style={{ fontWeight: "300" }} className="mt-4 mb-2">
+        Ratings
+      </p>
+      <div className="sortMenu mb-1 mx-2">
+        <div className={`row ${FilterCSS.gapGrid}`}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "13px",
+            }}
+            className={`border border-secondary rounded text-center col ${FilterCSS.Pevent}`}
+          >
+            <div style={{ margin: ".5rem 0" }}>3+ rated</div>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "13px",
+            }}
+            className={`border border-secondary rounded text-center col ${FilterCSS.Pevent}`}
+          >
+            <div style={{ margin: ".5rem 0" }}>4+ rated</div>
           </div>
         </div>
       </div>

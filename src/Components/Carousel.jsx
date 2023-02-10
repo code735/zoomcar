@@ -63,7 +63,7 @@ const Carousel = () => {
     return (
       <div style={{ position: "relative", display: "flex", justifyContent: "center" }} className="carousel-parent">
         <button style={{ position: "absolute", top: "50%", left: 100,borderRadius:"50px",padding:"5px 13px",border:"none"}} onClick={handlePrev} disabled={currentIndex === 0}>
-            <i class="bi bi-caret-left" style={{fontSize:"2rem"}}></i>
+            <i className="bi bi-caret-left" style={{fontSize:"2rem"}}></i>
         </button>
         <div style={{ display: "flex", justifyContent: "center"}} className="cars_scroll">
           {items.slice(currentIndex, currentIndex + 3).map(item => (
@@ -86,7 +86,7 @@ const Carousel = () => {
           ))}
         </div>
         <button style={{ position: "absolute", top: "50%", right: 100,borderRadius:"50px",padding:"5px 13px",border:"none"}} onClick={handleNext} disabled={currentIndex === items.length - 3}>
-            <i class="bi bi-caret-right" style={{fontSize:"2rem"}}></i>
+            <i className="bi bi-caret-right" style={{fontSize:"2rem"}}></i>
         </button>
       </div>
     );

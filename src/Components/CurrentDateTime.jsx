@@ -1,9 +1,11 @@
-import { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 function CurrentDateTime() {
     const [dateTime, setDateTime] = useState(new Date());
     const [laterDate, setLaterDate] = useState(new Date(dateTime.getTime() + 2 * 24 * 60 * 60 * 1000));
-  
+    const [timeLS, setTimeLS] = useState({});
+
+     
     useEffect(() => {
       const intervalId = setInterval(() => {
         setDateTime(new Date());
@@ -33,7 +35,15 @@ function CurrentDateTime() {
       minute: 'numeric',
       hour12: true,
     });
+
+    useEffect(() => {
+      setTimeLS({ StartDate:dateTimeString, EndDate:laterDateTimeString });
+    }, [dateTimeString, laterDateTimeString]);
   
+    useEffect(() => {
+      localStorage.setItem("timeLS", JSON.stringify(timeLS));
+    }, [timeLS]);
+    
     return (
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
         {dateTimeString}
@@ -44,4 +54,3 @@ function CurrentDateTime() {
   }
   
   export default CurrentDateTime;
-  

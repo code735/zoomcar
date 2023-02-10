@@ -6,9 +6,13 @@ export default function RangeCars() {
   return (
     <div style={{
         textAlign:"center",
-        color:"black"
+        color:"black",
+        background:"#F5F5F5",
+        padding:"2%"
     }}>
-       <h3>CHOOSE FROM OUR WIDE RANGE OF CARS</h3>
+       <h2 style={{
+        padding:"5%"
+       }}>CHOOSE FROM OUR WIDE RANGE OF CARS</h2>
        <Carousel/>
     </div>
   )

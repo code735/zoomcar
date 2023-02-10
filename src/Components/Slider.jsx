@@ -5,7 +5,7 @@ export default function Slider({setmenu,menu}) {
 
 const styles = {
     show:{
-        position:"absolute",
+        position:"fixed",
         top:"0",
         background:"#0000007a",
         width:"100%",
@@ -14,7 +14,7 @@ const styles = {
         zIndex:"2"
     },
     hide:{
-        position:"absolute",
+        position:"fixed",
         top:"0",
         background:"#0000007a",
         width:"100%",
@@ -38,10 +38,10 @@ const styles = {
                         background: "#fbf4f4",
                         display:'block'
                     }}>
-                        <i class="bi bi-person-fill"></i> Login or Signup
+                        <i className="bi bi-person-fill"></i> Login or Signup
                     </li>
                     <li>
-                        <div style={{display:'flex',alignItems:"center"}}><i style={{fontSize:"24px"}} class="bi bi-geo-alt"></i> <p style={{marginLeft:"13px",marginBottom:"0"}}>Change City</p></div>
+                        <div style={{display:'flex',alignItems:"center"}}><i style={{fontSize:"24px"}} className="bi bi-geo-alt"></i> <p style={{marginLeft:"13px",marginBottom:"0"}}>Change City</p></div>
                         <p style={{
                             margin:"0",
                             color:"#10a310",
@@ -72,7 +72,7 @@ const styles = {
                                 <span style={{
                                     fontSize:"24px"
                                 }}>
-                                    <i class="bi bi-file-earmark-text"></i>
+                                    <i className="bi bi-file-earmark-text"></i>
                                 </span>
                                 <p style={{margin:"0"}}>Zoomcar Fleet Vehicles Policies</p>
                         </div>
@@ -86,7 +86,7 @@ const styles = {
                                 <span style={{
                                     fontSize:"24px"
                                 }}>
-                                    <i class="bi bi-file-earmark-text"></i>
+                                    <i className="bi bi-file-earmark-text"></i>
                                 </span>
                                 <p style={{margin:"0"}}>Zoomcar Host Vehicles Policies</p>
                         </div>
@@ -100,7 +100,7 @@ const styles = {
                                 <span style={{
                                     fontSize:"24px"
                                 }}>
-                                    <i class="bi bi-telephone"></i>
+                                    <i className="bi bi-telephone"></i>
                                 </span>
                                 <p style={{margin:"0"}}>Help & Support</p>
                         </div>

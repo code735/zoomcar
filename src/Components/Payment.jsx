@@ -16,7 +16,7 @@ function Payment(props) {
       let data = await getData(
         `https://api-zoom-car-clone.cyclic.app/cards?_sort&`
       );
-      console.log(...data);
+
       setCarData(...data);
     } catch (err) {
       console.log(err);
@@ -277,7 +277,8 @@ function Payment(props) {
                         marginBottom: "25px",
                       }}
                     >
-                      <input className="InpurUPI1"
+                      <input
+                        className="InpurUPI1"
                         type="text"
                         placeholder="Enter Upi Id"
                         style={{
@@ -290,15 +291,18 @@ function Payment(props) {
                         }}
                         onInput={() => {
                           {
-                            let inputUPI = document.querySelector(".InpurUPI1").value;
-                           if(inputUPI!=""){
-                            document.querySelector(".submitBtn1").style.background = "green";
-                           }
-                           else{
-                            document.querySelector(".submitBtn1").style.background = "#e0e0e0";
-                           }
-                          
+                            let inputUPI =
+                              document.querySelector(".InpurUPI1").value;
+                            if (inputUPI != "") {
+                              document.querySelector(
+                                ".submitBtn1"
+                              ).style.background = "green";
+                            } else {
+                              document.querySelector(
+                                ".submitBtn1"
+                              ).style.background = "#e0e0e0";
                             }
+                          }
                         }}
                       />
                       <button
@@ -380,7 +384,8 @@ function Payment(props) {
                       }}
                     >
                       <input
-                        type="text" className="InpurUPI2"
+                        type="text"
+                        className="InpurUPI2"
                         placeholder="Enter Upi Id"
                         style={{
                           paddingLeft: "10px",
@@ -392,12 +397,16 @@ function Payment(props) {
                         }}
                         onInput={() => {
                           {
-                            let inputUPI = document.querySelector(".InpurUPI2").value;
-                            if(inputUPI!=""){
-                             document.querySelector(".submitBtn2").style.background = "green";
-                            }
-                            else{
-                             document.querySelector(".submitBtn2").style.background = "#e0e0e0";
+                            let inputUPI =
+                              document.querySelector(".InpurUPI2").value;
+                            if (inputUPI != "") {
+                              document.querySelector(
+                                ".submitBtn2"
+                              ).style.background = "green";
+                            } else {
+                              document.querySelector(
+                                ".submitBtn2"
+                              ).style.background = "#e0e0e0";
                             }
                           }
                         }}
@@ -482,7 +491,8 @@ function Payment(props) {
                       }}
                     >
                       <input
-                        type="text" className="InpurUPI3"
+                        type="text"
+                        className="InpurUPI3"
                         placeholder="Enter Upi Id"
                         style={{
                           paddingLeft: "10px",
@@ -494,13 +504,17 @@ function Payment(props) {
                         }}
                         onInput={() => {
                           {
-                            let inputUPI = document.querySelector(".InpurUPI3").value;
-                           if(inputUPI!=""){
-                            document.querySelector(".submitBtn3").style.background = "green";
-                           }
-                           else{
-                            document.querySelector(".submitBtn3").style.background = "#e0e0e0";
-                           }
+                            let inputUPI =
+                              document.querySelector(".InpurUPI3").value;
+                            if (inputUPI != "") {
+                              document.querySelector(
+                                ".submitBtn3"
+                              ).style.background = "green";
+                            } else {
+                              document.querySelector(
+                                ".submitBtn3"
+                              ).style.background = "#e0e0e0";
+                            }
                           }
                         }}
                       />
@@ -553,7 +567,8 @@ function Payment(props) {
                     className="inputbox-card"
                     style={{ margin: "40px 0 40px 0" }}
                   >
-                    <input className="CardNumber"
+                    <input
+                      className="CardNumber"
                       type="text"
                       placeholder="Card Number"
                       style={{
@@ -564,19 +579,31 @@ function Payment(props) {
                         borderRadius: "5px",
                         paddingLeft: "10px",
                       }}
-                      onInput={()=>{
-                        {let cardNumber = document.querySelector(".CardNumber").value;
-                          let expiredate =  document.querySelector(".ExpireDate").value;
-                          let CVV =  document.querySelector(".CVV").value;
-                          if(cardNumber!="" && expiredate!="" && CVV!=""){
-                            document.querySelector(".SubmitPayment").style.background="green";
-                            document.querySelector(".SubmitPayment").style.color="white";
+                      onInput={() => {
+                        {
+                          let cardNumber =
+                            document.querySelector(".CardNumber").value;
+                          let expiredate =
+                            document.querySelector(".ExpireDate").value;
+                          let CVV = document.querySelector(".CVV").value;
+                          if (
+                            cardNumber != "" &&
+                            expiredate != "" &&
+                            CVV != ""
+                          ) {
+                            document.querySelector(
+                              ".SubmitPayment"
+                            ).style.background = "green";
+                            document.querySelector(
+                              ".SubmitPayment"
+                            ).style.color = "white";
+                          } else {
+                            document.querySelector(
+                              ".SubmitPayment"
+                            ).style.background = "#e0e0e0";
                           }
-                          else{
-                            document.querySelector(".SubmitPayment").style.background="#e0e0e0";
-                          }
-                      }
-                  }}
+                        }
+                      }}
                     />
                   </div>
                   <div
@@ -588,7 +615,8 @@ function Payment(props) {
                     }}
                   >
                     <div className="expire-and-cvv" style={{ width: "50%" }}>
-                      <input className="ExpireDate"
+                      <input
+                        className="ExpireDate"
                         placeholder="Expiry(MM/YY)"
                         style={{
                           width: "100%",
@@ -598,23 +626,36 @@ function Payment(props) {
                           borderRadius: "5px",
                           paddingLeft: "10px",
                         }}
-                        onInput={()=>{
-                          {let cardNumber = document.querySelector(".CardNumber").value;
-                            let expiredate =  document.querySelector(".ExpireDate").value;
-                            let CVV =  document.querySelector(".CVV").value;
-                            if(cardNumber!="" && expiredate!="" && CVV!=""){
-                              document.querySelector(".SubmitPayment").style.background="green";
-                              document.querySelector(".SubmitPayment").style.color="white";
+                        onInput={() => {
+                          {
+                            let cardNumber =
+                              document.querySelector(".CardNumber").value;
+                            let expiredate =
+                              document.querySelector(".ExpireDate").value;
+                            let CVV = document.querySelector(".CVV").value;
+                            if (
+                              cardNumber != "" &&
+                              expiredate != "" &&
+                              CVV != ""
+                            ) {
+                              document.querySelector(
+                                ".SubmitPayment"
+                              ).style.background = "green";
+                              document.querySelector(
+                                ".SubmitPayment"
+                              ).style.color = "white";
+                            } else {
+                              document.querySelector(
+                                ".SubmitPayment"
+                              ).style.background = "#e0e0e0";
                             }
-                            else{
-                              document.querySelector(".SubmitPayment").style.background="#e0e0e0";
-                            }
-                        }
-                    }}
+                          }
+                        }}
                       />
                     </div>
                     <div className="expire-and-cvv" style={{ width: "50%" }}>
-                      <input className="CVV"
+                      <input
+                        className="CVV"
                         type="text"
                         placeholder="CVV"
                         style={{
@@ -625,19 +666,31 @@ function Payment(props) {
                           borderRadius: "5px",
                           paddingLeft: "10px",
                         }}
-                        onInput={()=>{
-                          {let cardNumber = document.querySelector(".CardNumber").value;
-                            let expiredate =  document.querySelector(".ExpireDate").value;
-                            let CVV =  document.querySelector(".CVV").value;
-                            if(cardNumber!="" && expiredate!="" && CVV!=""){
-                              document.querySelector(".SubmitPayment").style.background="green";
-                              document.querySelector(".SubmitPayment").style.color="white";
+                        onInput={() => {
+                          {
+                            let cardNumber =
+                              document.querySelector(".CardNumber").value;
+                            let expiredate =
+                              document.querySelector(".ExpireDate").value;
+                            let CVV = document.querySelector(".CVV").value;
+                            if (
+                              cardNumber != "" &&
+                              expiredate != "" &&
+                              CVV != ""
+                            ) {
+                              document.querySelector(
+                                ".SubmitPayment"
+                              ).style.background = "green";
+                              document.querySelector(
+                                ".SubmitPayment"
+                              ).style.color = "white";
+                            } else {
+                              document.querySelector(
+                                ".SubmitPayment"
+                              ).style.background = "#e0e0e0";
                             }
-                            else{
-                              document.querySelector(".SubmitPayment").style.background="#e0e0e0";
-                            }
-                        }
-                    }}
+                          }
+                        }}
                       />
                     </div>
                   </div>
@@ -669,7 +722,8 @@ function Payment(props) {
                   height: "100%",
                 }}
               >
-                <button className="SubmitPayment"
+                <button
+                  className="SubmitPayment"
                   style={{
                     padding: "10px 40px 10px 40px",
                     marginRight: "10px",
@@ -680,7 +734,6 @@ function Payment(props) {
                     fontWeight: "500",
                     background: "#e0e0e0",
                   }}
-                 
                 >
                   PAY ₹39515
                 </button>

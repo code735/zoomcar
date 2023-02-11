@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import './LocationPopUp.css';
 
-export default function LocationPopUp({toggle,setToggle}) {
+export default function TimePopUp({timetoggle,setTimetoggle}) {
 
   let addr = localStorage.getItem('locationLS');
   let timeLS = JSON.parse(localStorage.getItem('timeLS'));
@@ -24,7 +23,7 @@ export default function LocationPopUp({toggle,setToggle}) {
         height:"100vh",
         background:"white",
         padding:"2%",
-        display: toggle?"none":"block"
+        display: timetoggle?"none":"block"
     }}>
         <button style={{
           background:"transparent",
@@ -32,7 +31,7 @@ export default function LocationPopUp({toggle,setToggle}) {
           fontSize:"2rem"
         }}
         onClick={()=>{
-          toggle?setToggle(false):setToggle(true);
+            timetoggle?setTimetoggle(false):setTimetoggle(true);
           console.log(addr);
         }}
         >

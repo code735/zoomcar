@@ -12,18 +12,18 @@ function Payment(props) {
   //   return fetch(url).then((res) => res.json());
   // }; 
 
-  // const fetchData = async () => {
-  //   try {
-  //     let data = await getData(
-  //       `https://api-zoom-car-clone.cyclic.app/cards/1`
-  //     );
-  //     // console.log(...data);
-  //     // setCarData(data);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
- 
+  const fetchData = async () => {
+    try {
+      let data = await getData(
+        `https://api-zoom-car-clone.cyclic.app/cards?_sort&`
+      );
+      console.log(...data);
+      setCarData(...data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     const storedValueLocation = localStorage.getItem("locationLS");
     const storedValueDate = JSON.parse(localStorage.getItem("timeLS"));
@@ -287,7 +287,8 @@ function Payment(props) {
                         marginBottom: "25px",
                       }}
                     >
-                      <input className="InpurUPI1"
+                      <input
+                        className="InpurUPI1"
                         type="text"
                         placeholder="Enter Upi Id"
                         style={{
@@ -309,8 +310,6 @@ function Payment(props) {
                                 document.querySelector(".submitBtn1").style.background = "#e0e0e0";
                                }
                               
-                            
-                         
                            
                             }
                         }}
@@ -394,7 +393,8 @@ function Payment(props) {
                       }}
                     >
                       <input
-                        type="text" className="InpurUPI2"
+                        type="text"
+                        className="InpurUPI2"
                         placeholder="Enter Upi Id"
                         style={{
                           paddingLeft: "10px",
@@ -406,12 +406,16 @@ function Payment(props) {
                         }}
                         onInput={() => {
                           {
-                            let inputUPI = document.querySelector(".InpurUPI2").value;
-                            if(inputUPI!=""){
-                             document.querySelector(".submitBtn2").style.background = "green";
-                            }
-                            else{
-                             document.querySelector(".submitBtn2").style.background = "#e0e0e0";
+                            let inputUPI =
+                              document.querySelector(".InpurUPI2").value;
+                            if (inputUPI != "") {
+                              document.querySelector(
+                                ".submitBtn2"
+                              ).style.background = "green";
+                            } else {
+                              document.querySelector(
+                                ".submitBtn2"
+                              ).style.background = "#e0e0e0";
                             }
                           }
                         }}
@@ -496,7 +500,8 @@ function Payment(props) {
                       }}
                     >
                       <input
-                        type="text" className="InpurUPI3"
+                        type="text"
+                        className="InpurUPI3"
                         placeholder="Enter Upi Id"
                         style={{
                           paddingLeft: "10px",
@@ -508,13 +513,17 @@ function Payment(props) {
                         }}
                         onInput={() => {
                           {
-                            let inputUPI = document.querySelector(".InpurUPI3").value;
-                           if(inputUPI!=""){
-                            document.querySelector(".submitBtn3").style.background = "green";
-                           }
-                           else{
-                            document.querySelector(".submitBtn3").style.background = "#e0e0e0";
-                           }
+                            let inputUPI =
+                              document.querySelector(".InpurUPI3").value;
+                            if (inputUPI != "") {
+                              document.querySelector(
+                                ".submitBtn3"
+                              ).style.background = "green";
+                            } else {
+                              document.querySelector(
+                                ".submitBtn3"
+                              ).style.background = "#e0e0e0";
+                            }
                           }
                         }}
                       />
@@ -631,16 +640,28 @@ function Payment(props) {
                           paddingLeft: "10px",
                           
                         }}
-                        onInput={()=>{
-                          {let cardNumber = document.querySelector(".CardNumber").value;
-                            let expiredate =  document.querySelector(".ExpireDate").value;
-                            let CVV =  document.querySelector(".CVV").value;
-                            if(cardNumber!="" && expiredate!="" && CVV!=""){
-                              document.querySelector(".SubmitPayment").style.background="green";
-                              document.querySelector(".SubmitPayment").style.color="white";
-                            }
-                            else{
-                              document.querySelector(".SubmitPayment").style.background="#e0e0e0";
+                        onInput={() => {
+                          {
+                            let cardNumber =
+                              document.querySelector(".CardNumber").value;
+                            let expiredate =
+                              document.querySelector(".ExpireDate").value;
+                            let CVV = document.querySelector(".CVV").value;
+                            if (
+                              cardNumber != "" &&
+                              expiredate != "" &&
+                              CVV != ""
+                            ) {
+                              document.querySelector(
+                                ".SubmitPayment"
+                              ).style.background = "green";
+                              document.querySelector(
+                                ".SubmitPayment"
+                              ).style.color = "white";
+                            } else {
+                              document.querySelector(
+                                ".SubmitPayment"
+                              ).style.background = "#e0e0e0";
                             }
                         }
                     }}
@@ -671,16 +692,28 @@ function Payment(props) {
                           borderRadius: "5px",
                           paddingLeft: "10px",
                         }}
-                        onInput={()=>{
-                          {let cardNumber = document.querySelector(".CardNumber").value;
-                            let expiredate =  document.querySelector(".ExpireDate").value;
-                            let CVV =  document.querySelector(".CVV").value;
-                            if(cardNumber!="" && expiredate!="" && CVV!=""){
-                              document.querySelector(".SubmitPayment").style.background="green";
-                              document.querySelector(".SubmitPayment").style.color="white";
-                            }
-                            else{
-                              document.querySelector(".SubmitPayment").style.background="#e0e0e0";
+                        onInput={() => {
+                          {
+                            let cardNumber =
+                              document.querySelector(".CardNumber").value;
+                            let expiredate =
+                              document.querySelector(".ExpireDate").value;
+                            let CVV = document.querySelector(".CVV").value;
+                            if (
+                              cardNumber != "" &&
+                              expiredate != "" &&
+                              CVV != ""
+                            ) {
+                              document.querySelector(
+                                ".SubmitPayment"
+                              ).style.background = "green";
+                              document.querySelector(
+                                ".SubmitPayment"
+                              ).style.color = "white";
+                            } else {
+                              document.querySelector(
+                                ".SubmitPayment"
+                              ).style.background = "#e0e0e0";
                             }
                         }
                     }}

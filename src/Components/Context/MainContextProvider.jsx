@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export let MainContext = createContext();
 
 export default function MainContextProvider({ children }) {
-  let [isAuth, setIsAuth] = useState(false);
+  let [isAuth, setIsAuth] = useState(true);
   let [isLoading, setIsLoading] = useState(true);
   let [sort, setSort] = useState("?_sort");
   let [filter, setFilter] = useState("");

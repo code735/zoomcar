@@ -12,17 +12,17 @@ function Payment(props) {
   //   return fetch(url).then((res) => res.json());
   // }; 
 
-  const fetchData = async () => {
-    try {
-      let data = await getData(
-        `https://api-zoom-car-clone.cyclic.app/cards?_sort&`
-      );
-      console.log(...data);
-      setCarData(...data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     let data = await getData(
+  //       `https://api-zoom-car-clone.cyclic.app/cards?_sort&`
+  //     );
+  //     console.log(...data);
+  //     setCarData(...data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   useEffect(() => {
     const storedValueLocation = localStorage.getItem("locationLS");
@@ -48,6 +48,7 @@ function Payment(props) {
             boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
             width: "100%",
           }}
+
         >
           <section
             className="left-Section"

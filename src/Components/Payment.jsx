@@ -4,29 +4,39 @@ function Payment(props) {
   let [Gpayment, setgPayment] = useState(true);
   let [ppayment, setpPayment] = useState(true);
   let [patpayment, setpatPayment] = useState(true);
-  let [carData, setCarData] = useState([]);
+  let [carDatalocation, setCarDatalocation] = useState("");
+  let [cardataDate,setCarDatadate] = useState({});
   let [displayPayment, setdisplayPayment] = useState(true);
   let [displayPayment1, setdisplayPayment1] = useState(true);
-  const getData = (url) => {
-    return fetch(url).then((res) => res.json());
-  };
+  // const getData = (url) => {
+  //   return fetch(url).then((res) => res.json());
+  // }; 
 
-  const fetchData = async () => {
-    try {
-      let data = await getData(
-        `https://api-zoom-car-clone.cyclic.app/cards?_sort&`
-      );
-
-      setCarData(...data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     let data = await getData(
+  //       `https://api-zoom-car-clone.cyclic.app/cards?_sort&`
+  //     );
+  //     console.log(...data);
+  //     setCarData(...data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   useEffect(() => {
-    fetchData();
+    const storedValueLocation = localStorage.getItem("locationLS");
+    const storedValueDate = JSON.parse(localStorage.getItem("timeLS"));
+    if (storedValueLocation) {
+      setCarDatalocation(storedValueLocation);
+    }
+    if (storedValueDate) {
+      setCarDatadate(storedValueDate);
+    }
   }, []);
-  // console.log(carData);
+  console.log(cardataDate.StartDate)
+   
+
   return (
     <div style={{ display: "flex", gap: "20px", margin: "50px" }}>
       <div style={{ width: "60%" }}>
@@ -38,6 +48,7 @@ function Payment(props) {
             boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
             width: "100%",
           }}
+
         >
           <section
             className="left-Section"
@@ -286,23 +297,22 @@ function Payment(props) {
                           height: "50px",
                           width: "240px",
                           outlineColor: "green",
-                          border: "1px solid #e0e0e0",
+                          border: "1px solid #e0e0e0",  
                           borderRadius: "4px",
                         }}
                         onInput={() => {
                           {
-                            let inputUPI =
-                              document.querySelector(".InpurUPI1").value;
-                            if (inputUPI != "") {
-                              document.querySelector(
-                                ".submitBtn1"
-                              ).style.background = "green";
-                            } else {
-                              document.querySelector(
-                                ".submitBtn1"
-                              ).style.background = "#e0e0e0";
+                            let inputUPI = document.querySelector(".InpurUPI1").value;
+    
+                              if(inputUPI!=""){
+                                document.querySelector(".submitBtn1").style.background = "green";
+                               }
+                               else{
+                                document.querySelector(".submitBtn1").style.background = "#e0e0e0";
+                               }
+                              
+                           
                             }
-                          }
                         }}
                       />
                       <button
@@ -567,10 +577,11 @@ function Payment(props) {
                     className="inputbox-card"
                     style={{ margin: "40px 0 40px 0" }}
                   >
-                    <input
-                      className="CardNumber"
+                    <input className="CardNumber"
                       type="text"
                       placeholder="Card Number"
+                      maxLength={19}
+                      inputMode="numeric"
                       style={{
                         width: "100%",
                         height: "60px",
@@ -579,33 +590,35 @@ function Payment(props) {
                         borderRadius: "5px",
                         paddingLeft: "10px",
                       }}
-                      onInput={() => {
-                        {
-                          let cardNumber =
-                            document.querySelector(".CardNumber").value;
-                          let expiredate =
-                            document.querySelector(".ExpireDate").value;
-                          let CVV = document.querySelector(".CVV").value;
-                          if (
-                            cardNumber != "" &&
-                            expiredate != "" &&
-                            CVV != ""
-                          ) {
-                            document.querySelector(
-                              ".SubmitPayment"
-                            ).style.background = "green";
-                            document.querySelector(
-                              ".SubmitPayment"
-                            ).style.color = "white";
-                          } else {
-                            document.querySelector(
-                              ".SubmitPayment"
-                            ).style.background = "#e0e0e0";
+                      onInput={()=>{
+                        {let cardNumber = document.querySelector(".CardNumber").value;
+                          let expiredate =  document.querySelector(".ExpireDate").value;
+                          let CVV =  document.querySelector(".CVV").value;
+                          if(cardNumber!="" && expiredate!="" && CVV!=""){
+                            document.querySelector(".SubmitPayment").style.background="green";
+                            document.querySelector(".SubmitPayment").style.color="white";
                           }
-                        }
-                      }}
+                          else{
+                            document.querySelector(".SubmitPayment").style.background="#e0e0e0";
+                          }
+                         
+                      }
+                      
+                  }}
+                  onKeyDown={()=>{
+                    {
+                      let cardNumber = document.querySelector(".CardNumber");
+                      cardNumber = cardNumber.value.split(' ').join('');
+
+                      let finalVal = cardNumber.match(/.{1,4}/g).join(' ');
+                      document.querySelector(".CardNumber").value = finalVal;
+
+
+                    }
+                  }}
                     />
                   </div>
+  
                   <div
                     className="other-detail-card"
                     style={{
@@ -615,9 +628,10 @@ function Payment(props) {
                     }}
                   >
                     <div className="expire-and-cvv" style={{ width: "50%" }}>
-                      <input
-                        className="ExpireDate"
+                      <input className="ExpireDate"
                         placeholder="Expiry(MM/YY)"
+                        maxLength={5}
+                      inputMode="numeric"
                         style={{
                           width: "100%",
                           height: "60px",
@@ -625,6 +639,7 @@ function Payment(props) {
                           border: "1px solid #e0e0e0",
                           borderRadius: "5px",
                           paddingLeft: "10px",
+                          
                         }}
                         onInput={() => {
                           {
@@ -649,15 +664,27 @@ function Payment(props) {
                                 ".SubmitPayment"
                               ).style.background = "#e0e0e0";
                             }
-                          }
-                        }}
+                        }
+                    }}
+                    onKeyDown={()=>{
+                      {
+                        let expiredate = document.querySelector(".ExpireDate");
+                        expiredate = expiredate.value.split('/').join('');
+  
+                        let finalVal = expiredate.match(/.{1,2}/g).join('/');
+                        document.querySelector(".ExpireDate").value = finalVal;
+  
+  
+                      }
+                    }}
                       />
                     </div>
                     <div className="expire-and-cvv" style={{ width: "50%" }}>
-                      <input
-                        className="CVV"
-                        type="text"
+                      <input className="CVV"
+                        type="password"
                         placeholder="CVV"
+                        maxLength={3}
+                      inputMode="numeric"
                         style={{
                           width: "100%",
                           height: "60px",
@@ -689,8 +716,8 @@ function Payment(props) {
                                 ".SubmitPayment"
                               ).style.background = "#e0e0e0";
                             }
-                          }
-                        }}
+                        }
+                    }}
                       />
                     </div>
                   </div>
@@ -722,8 +749,7 @@ function Payment(props) {
                   height: "100%",
                 }}
               >
-                <button
-                  className="SubmitPayment"
+                <button className="SubmitPayment"
                   style={{
                     padding: "10px 40px 10px 40px",
                     marginRight: "10px",
@@ -734,6 +760,7 @@ function Payment(props) {
                     fontWeight: "500",
                     background: "#e0e0e0",
                   }}
+                 
                 >
                   PAY ₹39515
                 </button>
@@ -794,7 +821,7 @@ function Payment(props) {
                   }}
                 >
                   <img
-                    src="https://zoomcar-assets.zoomcar.com/photographs/original/13284dce101cd7020c977103e2cb5f33bee3b0e9.png?1663874479"
+                    src="https://zoomcar-assets.zoomcar.com/photographs/original/7f4a674aa51af027c8f0017fe823fb34e5d90a05.png?1663873067"
                     alt=""
                   />
                 </div>
@@ -828,9 +855,14 @@ function Payment(props) {
                     ></div>
                   </div>
                   <div className="time-and-date-containt">
-                    <div className="time-date">Wed, 08 Feb, 08:30 PM</div>
-                    <div className="place-city" style={{ color: "#666666" }}>
-                      Janakpuri , Delhi
+                    <div className="time-date">{cardataDate.StartDate}</div>
+                    <div className="place-city" style={{ color: "#666666",
+                  maxHeight: "1.6em",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  width: "140px"}}>
+                      {carDatalocation}
                     </div>
                   </div>
                 </div>
@@ -872,9 +904,13 @@ function Payment(props) {
                     ></div>
                   </div>
                   <div className="time-and-date-containt">
-                    <div className="time-date">Thu, 09 Feb, 04:30 AM</div>
-                    <div className="place-city" style={{ color: "#666666" }}>
-                      Janakpuri , Delhi
+                    <div className="time-date">{cardataDate.EndDate}</div>
+                    <div className="place-city" style={{ color: "#666666", maxHeight: "1.6em",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  width: "140px" }}>
+                      {carDatalocation}
                     </div>
                   </div>
                 </div>
@@ -887,7 +923,7 @@ function Payment(props) {
                   padding: "12px 10px 12px 10px",
                 }}
               >
-                <div>Free cancellation up to 08 February 2023, 02:30 PM</div>
+                <div>Free cancellation up to {cardataDate.EndDate}</div>
               </div>
               <div
                 className="fare-container"

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import FIndcars from './FIndcars'
-import LocationPopUp from './LocationPopUp'
 
 export default function Hero() {
   return (
@@ -21,7 +20,6 @@ export default function Hero() {
             <h1 style={{fontSize:"42px"}}>The perfect car for your next trip is just around the corner</h1>
             <h3 style={{fontSize:"28px"}}>Book your drive now!</h3>
         </div>
-        <LocationPopUp/>
         <div className="find-cars">
           <FIndcars/>
         </div>

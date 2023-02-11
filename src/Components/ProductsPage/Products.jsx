@@ -17,6 +17,7 @@ export default function Products() {
     setPage,
     totalPage,
     handleTotalPages,
+    locationNtime
   } = useContext(MainContext);
   let [productData, setProductData] = useState([]);
   let [locationAndTime, setLocationAndTime] = useState({
@@ -48,6 +49,7 @@ export default function Products() {
     getDataLS();
 
     console.log(`https://api-zoom-car-clone.cyclic.app/cards${sort}${filter}`);
+    console.log(locationNtime);
     getData(
       `https://api-zoom-car-clone.cyclic.app/cards${sort}${filter}&_page=${page}&_limit=10`
     );

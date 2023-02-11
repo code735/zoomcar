@@ -2,12 +2,13 @@ import React from 'react'
 import { useState,useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import CurrentDateTime from './CurrentDateTime'
-import LocationPopUp from './LocationPopUp'
+import LocationPopUp from './Pop-UP/LocationPopUp'
 
 export default function FIndcars() {
     let [trip, settrip] = useState(false)
     let [showloc,setshowloc] = useState(false);
     let[locationLS,setLocationLS] = useState("");
+    let [toggle,setToggle] = useState(true);
 
     const styles = {
         gray:{
@@ -69,7 +70,7 @@ export default function FIndcars() {
               .catch((error) => {
                 console.error(error);
               });
-          }, [location]);
+          }, [location,locationLS]);
 
   return (
     <div style={{
@@ -103,7 +104,10 @@ export default function FIndcars() {
         </div>
 
         {/* Trip Location */}
-        <div className="trip_location" onClick={getLocation} style={{display:"flex",alignItems:"center",background:"white",width:"100%",borderRadius:"5px"}}>
+        <div className="trip_location" onClick={()=>{
+            getLocation();
+            setToggle(false);
+        }} style={{display:"flex",alignItems:"center",background:"white",width:"100%",borderRadius:"5px"}}>
             <i className="bi bi-dot" style={{fontSize:"2rem",color:"#10a310"}}></i>
             <p style={
                 {
@@ -119,7 +123,7 @@ export default function FIndcars() {
             {addr}
             </p>
         </div>
-
+        <LocationPopUp toggle={toggle} setToggle={setToggle}/>
         {/* trip dates */}
         <div className="trip_date" style={{
             width:"100%",

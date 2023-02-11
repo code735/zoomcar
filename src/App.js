@@ -3,7 +3,6 @@ import "./App.css";
 import AllRoutes from "./Components/Routes/AllRoutes";
 import { useState, useEffect } from "react";
 import Slider from "./Components/Slider";
-
 function App() {
   const [menu, setmenu] = useState(false);
   return (
@@ -11,6 +10,7 @@ function App() {
       <Slider setmenu={setmenu} menu={menu} />
       <Navbar setmenu={setmenu} menu={menu} />
       <AllRoutes />
+
     </div>
   );
 }

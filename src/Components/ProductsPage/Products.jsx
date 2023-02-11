@@ -19,20 +19,38 @@ export default function Products() {
     handleTotalPages,
   } = useContext(MainContext);
   let [productData, setProductData] = useState([]);
+  let [locationAndTime, setLocationAndTime] = useState({
+    location: "",
+    time: "",
+  });
+
   async function getData(url) {
+    setIsLoading(true);
     let fetchData = await fetch(url);
     handleTotalPages(fetchData.headers.get("x-total-count"));
     let data = await fetchData.json();
     setProductData(data);
+    setIsLoading(false);
   }
 
+  const getDataLS = () => {
+    let locationData = localStorage.getItem("locationLS");
+    let timeData = JSON.parse(localStorage.getItem("timeLS"));
+
+    setLocationAndTime({
+      locationAndTime,
+      location: locationData,
+      time: timeData,
+    });
+  };
+
   useEffect(() => {
-    setIsLoading(true);
+    getDataLS();
+
     console.log(`https://api-zoom-car-clone.cyclic.app/cards${sort}${filter}`);
     getData(
       `https://api-zoom-car-clone.cyclic.app/cards${sort}${filter}&_page=${page}&_limit=10`
     );
-    setIsLoading(false);
   }, [sort, filter, page]);
 
   return (
@@ -42,23 +60,24 @@ export default function Products() {
       </Link>
 
       <section id="productSection" className="bg-light w-100 pt-4">
-        <div className={`bg-light d-flex ${ProductCSS.mainContainer}`}>
-          <div className="filterMenu">
-            <FilterMenu />
-          </div>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <div className={`bg-light d-flex ${ProductCSS.mainContainer}`}>
+            <div className="filterMenu">
+              <FilterMenu />
+            </div>
 
-          <div style={{ width: "70%" }}>
-            {isLoading ? (
-              <Loading />
-            ) : (
+            <div style={{ width: "70%" }}>
               <div className={ProductCSS.productCardsContainer}>
                 <div className={`${ProductCSS.nameCity} border rounded`}>
-                  <p>Chandigarh . MGPP+3Q Rupalheri, Punjab, India</p>
+                  <div className={ProductCSS.nameCityDOT}></div>
+                  <p>{locationAndTime.location}</p>
                 </div>
                 <div className={`${ProductCSS.timeBar} border rounded`}>
                   <div>
                     <label> START DATE/TIME</label>
-                    <p>10 Feb,2023 04:00 PM</p>
+                    <p>{locationAndTime.time.StartDate}</p>
                   </div>
 
                   <span>
@@ -67,7 +86,7 @@ export default function Products() {
 
                   <div>
                     <label> END DATE/TIME</label>
-                    <p>11 Feb,2023 12:00 AM</p>
+                    <p>{locationAndTime.time.EndDate}</p>
                   </div>
                 </div>
                 {productData &&
@@ -77,10 +96,10 @@ export default function Products() {
                     );
                   })}
               </div>
-            )}
-            <Pagination page={page} />
+              <Pagination page={page} />
+            </div>
           </div>
-        </div>
+        )}
       </section>
     </>
   );

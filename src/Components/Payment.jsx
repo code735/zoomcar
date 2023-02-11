@@ -4,29 +4,39 @@ function Payment(props) {
   let [Gpayment, setgPayment] = useState(true);
   let [ppayment, setpPayment] = useState(true);
   let [patpayment, setpatPayment] = useState(true);
-  let [carData, setCarData] = useState([]);
+  let [carDatalocation, setCarDatalocation] = useState("");
+  let [cardataDate,setCarDatadate] = useState({});
   let [displayPayment, setdisplayPayment] = useState(true);
   let [displayPayment1, setdisplayPayment1] = useState(true);
-  const getData = (url) => {
-    return fetch(url).then((res) => res.json());
-  };
+  // const getData = (url) => {
+  //   return fetch(url).then((res) => res.json());
+  // }; 
 
-  const fetchData = async () => {
-    try {
-      let data = await getData(
-        `https://api-zoom-car-clone.cyclic.app/cards/1`
-      );
-      // console.log(...data);
-      // setCarData(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     let data = await getData(
+  //       `https://api-zoom-car-clone.cyclic.app/cards/1`
+  //     );
+  //     // console.log(...data);
+  //     // setCarData(data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
  
   useEffect(() => {
-    fetchData();
+    const storedValueLocation = localStorage.getItem("locationLS");
+    const storedValueDate = JSON.parse(localStorage.getItem("timeLS"));
+    if (storedValueLocation) {
+      setCarDatalocation(storedValueLocation);
+    }
+    if (storedValueDate) {
+      setCarDatadate(storedValueDate);
+    }
   }, []);
-  // console.log(carData);
+  console.log(cardataDate.StartDate)
+   
+
   return (
     <div style={{ display: "flex", gap: "20px", margin: "50px" }}>
       <div style={{ width: "60%" }}>
@@ -285,19 +295,23 @@ function Payment(props) {
                           height: "50px",
                           width: "240px",
                           outlineColor: "green",
-                          border: "1px solid #e0e0e0",
+                          border: "1px solid #e0e0e0",  
                           borderRadius: "4px",
                         }}
                         onInput={() => {
                           {
                             let inputUPI = document.querySelector(".InpurUPI1").value;
-                           if(inputUPI!=""){
-                            document.querySelector(".submitBtn1").style.background = "green";
-                           }
-                           else{
-                            document.querySelector(".submitBtn1").style.background = "#e0e0e0";
-                           }
-                          
+    
+                              if(inputUPI!=""){
+                                document.querySelector(".submitBtn1").style.background = "green";
+                               }
+                               else{
+                                document.querySelector(".submitBtn1").style.background = "#e0e0e0";
+                               }
+                              
+                            
+                         
+                           
                             }
                         }}
                       />
@@ -807,9 +821,14 @@ function Payment(props) {
                     ></div>
                   </div>
                   <div className="time-and-date-containt">
-                    <div className="time-date">Wed, 08 Feb, 08:30 PM</div>
-                    <div className="place-city" style={{ color: "#666666" }}>
-                      Janakpuri , Delhi
+                    <div className="time-date">{cardataDate.StartDate}</div>
+                    <div className="place-city" style={{ color: "#666666",
+                  maxHeight: "1.6em",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  width: "140px"}}>
+                      {carDatalocation}
                     </div>
                   </div>
                 </div>
@@ -851,9 +870,13 @@ function Payment(props) {
                     ></div>
                   </div>
                   <div className="time-and-date-containt">
-                    <div className="time-date">Thu, 09 Feb, 04:30 AM</div>
-                    <div className="place-city" style={{ color: "#666666" }}>
-                      Janakpuri , Delhi
+                    <div className="time-date">{cardataDate.EndDate}</div>
+                    <div className="place-city" style={{ color: "#666666", maxHeight: "1.6em",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  width: "140px" }}>
+                      {carDatalocation}
                     </div>
                   </div>
                 </div>
@@ -866,7 +889,7 @@ function Payment(props) {
                   padding: "12px 10px 12px 10px",
                 }}
               >
-                <div>Free cancellation up to 08 February 2023, 02:30 PM</div>
+                <div>Free cancellation up to {cardataDate.EndDate}</div>
               </div>
               <div
                 className="fare-container"

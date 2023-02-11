@@ -9,7 +9,7 @@
   gap: 1rem;
 }
 
-.nameCity ::before {
+.nameCityDOT {
   position: absolute;
   content: "";
   width: 8px;
@@ -19,7 +19,6 @@
   display: inline-block;
   border: 8px solid #e6ffea;
   box-sizing: content-box;
-  left: 30%;
 }
 
 .nameCity,
@@ -28,8 +27,17 @@
 }
 
 .nameCity p {
-  margin: 0.7rem 0rem 0.7rem 2.5rem;
+  margin: 0.7rem 0rem 0.7rem 1.5rem;
   font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nameCity {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
 }
 
 .timeBar {

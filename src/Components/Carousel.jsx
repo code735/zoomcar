@@ -62,11 +62,28 @@ const Carousel = () => {
   
     return (
       <div style={{ position: "relative", display: "flex", justifyContent: "center" }} className="carousel-parent">
-        <button style={{ position: "absolute", top: "50%", left: 100,borderRadius:"50px",padding:"5px 13px",border:"none"}} onClick={handlePrev} disabled={currentIndex === 0}>
-            <i class="bi bi-caret-left" style={{fontSize:"2rem"}}></i>
+        <button
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: 100,
+            borderRadius: "50px",
+            padding: "10px",
+            border: "none",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+          className="prev"
+          onClick={handlePrev}
+          disabled={currentIndex === 0}
+        >
+          <span className="material-symbols-outlined" style={{ fontSize: "3rem" }}>
+            arrow_back_ios
+          </span>
         </button>
-        <div style={{ display: "flex", justifyContent: "center"}} className="cars_scroll">
-          {items.slice(currentIndex, currentIndex + 3).map(item => (
+        <div style={{ display: "flex", justifyContent: "center" }} className="cars_scroll">
+          {items.slice(currentIndex, currentIndex + 3).map((item, index) => (
             <div
               key={item.id}
               style={{
@@ -74,19 +91,38 @@ const Carousel = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                textAlign: "center"
+                textAlign: "center",
+                width: index === 1 ? "400%" : "100%"
               }}
+              className="car_hold"
             >
               <div className="single_car">
-                  <h3>{item.price}</h3>
-                  <h3>{item.heading}</h3>
-                  <img src={item.image} alt="" />
+                <h3 style={{ color: "#AFA8A8" }}>{item.price}</h3>
+                <h3>{item.heading}</h3>
+                <img src={item.image} alt="" />
               </div>
             </div>
           ))}
         </div>
-        <button style={{ position: "absolute", top: "50%", right: 100,borderRadius:"50px",padding:"5px 13px",border:"none"}} onClick={handleNext} disabled={currentIndex === items.length - 3}>
-            <i class="bi bi-caret-right" style={{fontSize:"2rem"}}></i>
+        <button
+          style={{
+            position: "absolute",
+            top: "50%",
+            right: 100,
+            borderRadius: "50px",
+            padding: "10px",
+            border: "none",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+          className="next"
+          onClick={handleNext}
+          disabled={currentIndex === items.length - 3}
+        >
+          <span className="material-symbols-outlined" style={{ fontSize: "3rem" }}>
+            arrow_forward_ios
+          </span>
         </button>
       </div>
     );

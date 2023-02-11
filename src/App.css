@@ -60,7 +60,7 @@ p {
 }
 
 .find-cars {
-  width: 30%;
+  width: 32%;
   margin: auto;
 }
 
@@ -153,6 +153,31 @@ p {
   .single_car {
     width: 100vw;
   }
+
+  .prev {
+    left: 10px !important;
+    padding: 5px !important;
+  }
+
+  .next {
+    right: 10px !important;
+    padding: 5px !important;
+  }
+
+  .prev span {
+    font-size: 2rem !important;
+  }
+
+  .next span {
+    font-size: 2rem !important;
+  }
+
+  .hamburger {
+    padding: 5px 10px;
+    background: black;
+    border-radius: 100%;
+  }
+
 }
 
 /* 480px devices */

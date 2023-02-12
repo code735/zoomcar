@@ -5,6 +5,7 @@ import ProductDetails from "../ProductDetails/ProductDetails";
 import PrivateRoute from "./PrivateRoute";
 import Payment from "../Payment";
 import PaymentSuccess from "../paymentDonePage";
+import Signup from "../loginpage/Signup";
 
 export default function AllRoutes() {
   return (
@@ -20,7 +21,8 @@ export default function AllRoutes() {
         }
       />
       <Route path="/payment" element={<Payment />} />
-      <Route path='/paymentDone' element={<PaymentSuccess/>}/>
+      <Route path="/paymentDone" element={<PaymentSuccess />} />
+      <Route path="/login" element={<Signup />} />
     </Routes>
   );
 }

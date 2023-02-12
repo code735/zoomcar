@@ -5,6 +5,7 @@ import "./Signup.css";
 function Signup(props) {
   let [showPopupPhone, setShowPopupPhone] = useState(false);
   let [showPopupEmail, setShowPopupEmail] = useState(false);
+
   let popupRef = useRef(null);
   let continerRef = useRef(null);
   let popupRefE = useRef(null);
@@ -44,7 +45,7 @@ function Signup(props) {
           flexDirection: "column",
           width: "50%",
           height: "100%",
-          marginTop: "10%"
+          marginTop: "10%",
         }}
       >
         <div className="imageContainer">
@@ -126,7 +127,7 @@ function Signup(props) {
                 padding: "10px",
                 border: "none",
                 outline: "none",
-                fontSize: "15px"
+                fontSize: "15px",
               }}
               type="text"
               placeholder="Mobile Number"
@@ -142,7 +143,7 @@ function Signup(props) {
                 "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
               border: "none",
               background: "#e0e0e0",
-              color: "white"
+              color: "white",
             }}
           >
             CONTINUE
@@ -184,7 +185,7 @@ function Signup(props) {
                 padding: "10px",
                 border: "none",
                 outline: "none",
-                fontSize: "15px"
+                fontSize: "15px",
               }}
               type="text"
               placeholder="Email ID"
@@ -200,7 +201,7 @@ function Signup(props) {
                 "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
               border: "none",
               background: "#e0e0e0",
-              color: "white"
+              color: "white",
             }}
           >
             CONTINUE

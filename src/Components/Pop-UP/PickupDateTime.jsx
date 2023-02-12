@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import './PickupDateTime.css'
 
 function PickupDateTime() {
@@ -7,6 +7,16 @@ function PickupDateTime() {
   const [dropoffDate, setDropoffDate] = useState('');
   const [dropoffTime, setDropoffTime] = useState('');
 
+  const [total_hrs, setTotalHrs] = useState(0);
+
+  const start = new Date(`${pickupDate}T${pickupTime}:00`);
+  const end = new Date(`${dropoffDate}T${dropoffTime}:00`);
+  const total = (end - start) / (1000 * 60 * 60);
+
+  localStorage.setItem('total_hrs', total);
+
+
+  
   const handlePickupDateChange = (event) => {
     setPickupDate(event.target.value);
   };
@@ -31,6 +41,8 @@ function PickupDateTime() {
   const formatTime = (time) => {
     return new Date(`1970-01-01T${time}:00`).toLocaleTimeString('en-US');
   };
+
+  console.log(total);
 
   return (
     <section style={{
@@ -80,14 +92,13 @@ function PickupDateTime() {
         </div>
       </div>
       <div style={{
-          background:"#10A310",
-          color:"white",
           fontWeight:"bold",
           padding:"10px",
           borderRadius:"10px",
           width:"49%",
           margin:"auto",
-          fontSize:"1.2rem"
+          fontSize:"1.2rem",
+          border:"2px solid black"
         }}>
         <ul>
           <li>

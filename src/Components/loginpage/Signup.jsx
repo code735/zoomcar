@@ -7,6 +7,7 @@ function Signup(props) {
   let [showPopupPhone, setShowPopupPhone] = useState(false);
   let [showPopupEmail, setShowPopupEmail] = useState(false);
   let [AleatOTP, setOTP] = useState("");
+  let [userName , setUsername] = useState("");
   let [toggle, setToggle] = useState(false);
   let popupRef = useRef(null);
   let continerRef = useRef(null);
@@ -35,6 +36,11 @@ function Signup(props) {
     }
   }, [showPopupPhone, showPopupEmail]);
 
+  const handleusername =(e)=>{
+    setUsername(e.target.value);
+    localStorage.setItem("userName",e.target.value);
+  }
+
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div
@@ -59,6 +65,10 @@ function Signup(props) {
         <div className="Signupboxcointiber">
           <div className="heading-login">Enter details to login/sign-up</div>
           <div className="option-menu">
+            <div className="UserName">
+              <input type="text" placeholder="Enter User Name"  value={userName} onInput={handleusername}/>
+            
+            </div>
             <div className="option-mobile">
               <img
                 src="https://zoomcar-assets.zoomcar.com/images/original/38ff9c58fe221677b6e8958c1caba43d35710fe2.png?1654779648"

@@ -82,6 +82,20 @@ p {
   transition: all 0.5s ease;
 }
 
+/* Bottom Navbar  */
+.btn_nav {
+  background: #383838;
+}
+
+.btn_nav nav {
+  justify-content: space-between;
+}
+
+.btn_nav p {
+  color: white;
+  font-size: 1.5rem;
+}
+
 /* 992px devices devices */
 @media (max-width: 992px) {
   .carouselItem {
@@ -178,6 +192,42 @@ p {
     border-radius: 100%;
   }
 
+  .ul-prev {
+    position: absolute;
+    left: 10px;
+    z-index: 1;
+  }
+
+  .ul-next {
+    position: absolute;
+    right: 10px;
+    z-index: 1;
+  }
+
+  .UlCarousel_item {
+    width: 50% !important;
+  }
+
+  .UlCarousel_item:nth-child(0) {
+    display: none !important;
+  }
+
+  .UlCarousel_item:nth-child(1) {
+    display: none !important;
+  }
+
+  .UlCarousel_item:nth-child(2) {
+    display: none !important;
+  }
+
+  .UlCarousel_item:nth-child(3) {
+    display: none !important;
+  }
+
+  .DriveFree-text {
+    width: 100% !important;
+  }
+
 }
 
 /* 480px devices */
@@ -209,5 +259,18 @@ p {
 
   .find-cars {
     width: 100%;
+  }
+
+  .UlCarousel_item {
+    width: 100% !important;
+  }
+
+  .btn_nav nav p {
+    font-size: .8rem;
+    font-weight: bold;
+  }
+
+  .btn_nav nav {
+    gap: 10px;
   }
 }

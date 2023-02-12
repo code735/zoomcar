@@ -1,6 +1,11 @@
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { MainContext } from "../Context/MainContextProvider";
 import ProductDetailsCSS from "./ProductDetails.module.css";
+import RadioButtonGroup from "./RadioButtonGroup";
 
 export default function RightContainer() {
+  let { total } = useContext(MainContext);
   return (
     <>
       <div className={ProductDetailsCSS.otherCharges}>
@@ -22,72 +27,15 @@ export default function RightContainer() {
 
         <h6>TRIP PROTECTION PACKAGE</h6>
         <div>
-          <div className={ProductDetailsCSS.TPP_Div}>
-            <img
-              style={{ width: "24px" }}
-              src="https://zoomcar-assets.zoomcar.com/images/original/f6b01d4ca15bc999a8a0bbe2bb64710cf71f9b75.png?1633967237"
-              alt="icon"
-            />
-            <div>
-              <p style={{ fontSize: "14px" }}>Basic (₹199)</p>
-              <p style={{ fontSize: "12px", color: "#a8a8a8" }}>
-                You pay up to INR 3499 in case of any damage
-              </p>
-            </div>
-            <input type="radio" />
-          </div>
-          <div className={ProductDetailsCSS.TPP_Div}>
-            <img
-              style={{ width: "24px" }}
-              src="https://zoomcar-assets.zoomcar.com/images/original/97e7b92d185271d80fa2e7638a3eead238f9a0ed.png?1633967297"
-              alt="icon"
-            />
-            <div>
-              <p style={{ fontSize: "14px" }}>Standard (₹279)</p>
-              <p style={{ fontSize: "12px", color: "#a8a8a8" }}>
-                You pay up to INR 999 in case of any damage
-              </p>
-              <p
-                style={{
-                  color: "#10a310",
-                  fontSize: "12px",
-                  fontWeight: "bold",
-                }}
-              >
-                Most Opted
-              </p>
-            </div>
-            <input type="radio" />
-          </div>
-          <div className={ProductDetailsCSS.TPP_Div}>
-            <img
-              style={{ width: "24px" }}
-              src="https://zoomcar-assets.zoomcar.com/images/original/ec5e27493f742df5f714ee0830d2b623a4ba91fe.png?1667486639"
-              alt="icon"
-            />
-            <div>
-              <p style={{ fontSize: "14px" }}>Peace of Mind (₹339)</p>
-              <p style={{ fontSize: "12px", color: "#a8a8a8" }}>
-                You pay up to INR 99 in case of any damage
-              </p>
-              <p
-                style={{
-                  color: "#10a310",
-                  fontSize: "12px",
-                  fontWeight: "bold",
-                }}
-              >
-                Value for Money
-              </p>
-            </div>
-            <input type="radio" />
-          </div>
+          <RadioButtonGroup />
         </div>
       </div>
       <div className={ProductDetailsCSS.detailsContainer}>
         <div>
           <p>How Trip Protection Works?</p>
-          <p>
+          <p
+            style={{ fontSize: "12px", lineHeight: "16px", fontWeight: "400" }}
+          >
             • Zoomcar will assist in damage repair costs up to the amount as per
             the maximum deductible limit. • Does not cover any third-party
             liability or any intentional damage or damage that occurred due to
@@ -104,7 +52,7 @@ export default function RightContainer() {
             justifyContent: "space-between",
           }}
         >
-          <h5>₹4,953</h5>
+          <h5>₹{total}</h5>
           <div style={{ display: "flex", alignItems: "center" }}>
             <img
               style={{ width: "36px" }}
@@ -114,9 +62,11 @@ export default function RightContainer() {
             <p>Apply Coupon</p>
           </div>
         </div>
-        <button className={ProductDetailsCSS.Totalbtn}>
-          PROCEED TO PAY ₹4,953
-        </button>
+        <Link to="/payment">
+          <button className={ProductDetailsCSS.Totalbtn}>
+            PROCEED TO PAY ₹{total}
+          </button>
+        </Link>
       </div>
     </>
   );

@@ -78,6 +78,14 @@
   margin-bottom: 100%;
   margin-top: 25px;
 }
+.otp-input{
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  width: 100%;
+  padding: 8px 0px 8px 0px;
+  margin-bottom: 100%;
+  margin-top: 25px;
+}
 .input-box-email {
   display: flex;
   border-radius: 3px;
@@ -86,6 +94,13 @@
 }
 .Enter-email-id {
   font-size: 17px;
-  width: 30%;
+  width: 35%;
   font-weight: bold;
+}
+.imageContainer{
+  display: flex;
+  justify-content: center;
+}
+.heading-login{
+  text-align: center;
 }

@@ -18,7 +18,7 @@ export default function ProductDetails() {
     setSingleProduct(data);
     let obj = {
       name: data.car_data.name,
-      brand: data.car_data.name,
+      brand: data.car_data.brand,
       image_url: data.car_data.url,
       type: data.car_data.accessories[1],
       transmission: data.car_data.accessories[0],

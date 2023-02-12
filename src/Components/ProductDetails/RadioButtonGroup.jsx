@@ -33,8 +33,9 @@ export default function RadioButtonGroup() {
     let endDate = new Date(data.EndDate.slice(4));
 
     let totalHours = diff_hours(endDate, stDate);
-    let priceperHour = JSON.parse(localStorage.getItem("productData")).car_data
-      .pricing.price_per_hour;
+    let priceperHour = JSON.parse(
+      localStorage.getItem("productData")
+    ).price_p_hour;
     let totalPrice =
       priceperHour * totalHours + ConvenienceFee + Number(insurance);
     setTotal(totalPrice);

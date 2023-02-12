@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
+import Gmap from './Gmap';
 import './LocationPopUp.css';
 
-export default function LocationPopUp({toggle,setToggle}) {
+export default function LocationPopUp({toggle,setToggle,location}) {
 
   let addr = localStorage.getItem('locationLS');
   let timeLS = JSON.parse(localStorage.getItem('timeLS'));
   let sdate = "null";
   let edate = "null";
-  
+
+
   if(timeLS!=null){
     sdate = timeLS.StartDate;
     edate = timeLS.EndDate;
@@ -29,7 +31,8 @@ export default function LocationPopUp({toggle,setToggle}) {
         <button style={{
           background:"transparent",
           border:"none",
-          fontSize:"2rem"
+          fontSize:"2rem",
+          boxShadow:'none'
         }}
         onClick={()=>{
           toggle?setToggle(false):setToggle(true);
@@ -39,7 +42,9 @@ export default function LocationPopUp({toggle,setToggle}) {
           <i className="bi bi-arrow-left"></i>
         </button>
 
-        <div>
+        <div style={{
+          margin:"2%"
+        }}>
           <div style={{
             display:"flex",
             justifyContent:"center",
@@ -71,6 +76,15 @@ export default function LocationPopUp({toggle,setToggle}) {
                 <p>{edate}</p>
               </div>
           </div>
+        </div>
+
+        <div style={{
+          width:"67%",
+          margin:"auto",
+          height:"70%",
+          borderRadius:"50px",
+        }}>
+          <Gmap location={location}/>
         </div>
     </div>
   )

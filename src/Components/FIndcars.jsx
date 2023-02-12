@@ -28,6 +28,7 @@ export default function FIndcars() {
         }, [locationLS]);
 
         const [location, setLocation] = useState({});
+        
         let [city,setcity] = useState("Mumbai");
         let [addr,setaddress] = useState("226Q+3PM, Diwale Village, Sector 14, CBD Belapur, Navi Mumbai, Maharashtra 400614, India");
 
@@ -132,7 +133,7 @@ export default function FIndcars() {
             {addr}
             </p>
         </div>
-        <LocationPopUp toggle={toggle} setToggle={setToggle}/>
+        <LocationPopUp toggle={toggle} setToggle={setToggle} location={location}/>
         <TimePopUp timetoggle={timetoggle} setTimetoggle={setTimetoggle}/>
         {/* trip dates */}
         <div className="trip_date" style={{

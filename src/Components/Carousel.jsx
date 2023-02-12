@@ -9,9 +9,9 @@ const Carousel = () => {
           image: "https://zoomcar-assets.zoomcar.com/photographs/original/a49559a67ba1d5fd7e2ffea2f78f654691ee018e.png?1663874345"
         },
         {
-          heading: "Hyundai Aura MT Diesel",
-          price: "₹200 per hour",
-          image: "https://zoomcar-assets.zoomcar.com/photographs/original/a19df3671ddc97708ed40303eff91e6d91680535.png?1663872771"
+          heading: "Duster MT Diesel",
+          price: "₹ 130 per hour",
+          image: "https://zoomcar-assets.zoomcar.com/photographs/original/740dff9817b1e2553c584ce7b22d4deaffdd0b66.png?1663875879"
         },
         {
           heading: "Ford Ecosport MT Diesel",

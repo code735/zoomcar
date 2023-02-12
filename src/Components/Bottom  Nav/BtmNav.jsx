@@ -16,9 +16,10 @@ export default function BtmNav() {
   return (
     <div style={{
         background:"#383838",
-        color:'white',
-        padding:"3%"
-    }}>
+        color:'white'
+    }}
+    className="btm-nav-parent"
+    >
         <div style={{
             paddingBottom:"2%"
         }} className='btn_nav' id='btm_id'>

@@ -814,8 +814,8 @@ function Payment(props) {
             >
               <div className="Car-Name" style={{ marginBottom: "5px" }}>
                 <b>
-                  {carDetail.car_data.brand} {carDetail.car_data.name}{" "}
-                  {carDetail.car_data.accessories[1]}
+                  {carDetail.brand} {carDetail.name}{" "}
+                  {carDetail.type}
                 </b>
               </div>
               <div
@@ -828,7 +828,7 @@ function Payment(props) {
                     src="https://zoomcar-assets.zoomcar.com/images/original/2aceee9e84a7bf79ae8928ace92944abbac907d4.png?1584455088"
                     alt=""
                   />
-                  <span>{carDetail.car_data.accessories[0]}</span>
+                  <span>{carDetail.transmission}</span>
                 </div>
                 <div className="Car-info">
                   <img
@@ -836,7 +836,7 @@ function Payment(props) {
                     src="https://zoomcar-assets.zoomcar.com/images/original/4c611ba1fb54d1e42553020d9022e5ab2dac14ea.png?1584455110"
                     alt=""
                   />
-                  <span>{carDetail.car_data.accessories[1]}</span>
+                  <span>{carDetail.type}</span>
                 </div>
                 <div
                   className="car-img"
@@ -849,7 +849,7 @@ function Payment(props) {
                     marginBottom: "-40px",
                   }}
                 >
-                  <img src={carDetail.car_data.url_large} alt="" />
+                  <img src={carDetail.image_url} alt="" />
                 </div>
               </div>
             </div>

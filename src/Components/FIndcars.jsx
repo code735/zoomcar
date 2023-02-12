@@ -154,7 +154,7 @@ export default function FIndcars() {
         </div>
             
         <Link to="/products" className='find_cars_btn'>
-            <button style={{width:"100%",padding:"14px",border:'none',borderRadius:"5px",outline:"none",background:"#10a310",color:"white"}}>Find Cars</button>
+            <button style={{width:"100%",padding:"14px",border:'none',borderRadius:"5px",outline:"none",background:"#10a310",color:"white",margin:"auto"}}>Find Cars</button>
         </Link>
     </div>
   )

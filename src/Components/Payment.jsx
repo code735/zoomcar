@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 function Payment(props) {
   let [Gpayment, setgPayment] = useState(true);
   let [ppayment, setpPayment] = useState(true);
@@ -8,21 +9,7 @@ function Payment(props) {
   let [cardataDate,setCarDatadate] = useState({});
   let [displayPayment, setdisplayPayment] = useState(true);
   let [displayPayment1, setdisplayPayment1] = useState(true);
-  // const getData = (url) => {
-  //   return fetch(url).then((res) => res.json());
-  // }; 
 
-  // const fetchData = async () => {
-  //   try {
-  //     let data = await getData(
-  //       `https://api-zoom-car-clone.cyclic.app/cards?_sort&`
-  //     );
-  //     console.log(...data);
-  //     setCarData(...data);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   useEffect(() => {
     const storedValueLocation = localStorage.getItem("locationLS");
@@ -38,7 +25,9 @@ function Payment(props) {
    
 
   return (
+    
     <div style={{ display: "flex", gap: "20px", margin: "50px" }}>
+
       <div style={{ width: "60%" }}>
         <h1 style={{ fontSize: "22px" }}>Select a Payment method</h1>
         <div
@@ -315,7 +304,8 @@ function Payment(props) {
                             }
                         }}
                       />
-                      <button
+                     <Link to='/paymentDone'>
+                     <button
                         className="submitBtn1"
                         style={{
                           width: "150px",
@@ -323,10 +313,12 @@ function Payment(props) {
                           color: "white",
                           background: "#e0e0e0",
                           borderRadius: "4px",
+                          height:"100%"
                         }}
                       >
                         VERIFY & PAY
                       </button>
+                     </Link>
                     </div>
                   </div>
                   <div style={{ borderBottom: "1px solid #cccccc" }}>
@@ -421,18 +413,21 @@ function Payment(props) {
                           }
                         }}
                       />
+                     <Link to='/PaymentDone'>
                       <button
-                        className="submitBtn2"
-                        style={{
-                          width: "150px",
-                          border: "none",
-                          color: "white",
-                          background: "#e0e0e0",
-                          borderRadius: "4px",
-                        }}
-                      >
-                        VERIFY & PAY
-                      </button>
+                          className="submitBtn2"
+                          style={{
+                            width: "150px",
+                            border: "none",
+                            color: "white",
+                            background: "#e0e0e0",
+                            borderRadius: "4px",
+                            height:"100%"
+                          }}
+                        >
+                          VERIFY & PAY
+                        </button>
+                     </Link>
                     </div>
                   </div>
                   <div>
@@ -528,18 +523,21 @@ function Payment(props) {
                           }
                         }}
                       />
+                     <Link to="/PaymentDone">
                       <button
-                        className="submitBtn3"
-                        style={{
-                          width: "150px",
-                          border: "none",
-                          color: "white",
-                          background: "#e0e0e0",
-                          borderRadius: "4px",
-                        }}
-                      >
-                        VERIFY & PAY
-                      </button>
+                          className="submitBtn3"
+                          style={{
+                            width: "150px",
+                            border: "none",
+                            color: "white",
+                            background: "#e0e0e0",
+                            borderRadius: "4px",
+                            height:"100%"
+                          }}
+                        >
+                          VERIFY & PAY
+                        </button>
+                     </Link>
                     </div>
                   </div>
                 </div>

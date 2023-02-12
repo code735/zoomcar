@@ -1,11 +1,13 @@
 import React from "react";
+import OTP from "./OTP";
 import { useState, useRef, useEffect } from "react";
 
 import "./Signup.css";
 function Signup(props) {
   let [showPopupPhone, setShowPopupPhone] = useState(false);
   let [showPopupEmail, setShowPopupEmail] = useState(false);
-
+  let [AleatOTP, setOTP] = useState("");
+  let [toggle, setToggle] = useState(false);
   let popupRef = useRef(null);
   let continerRef = useRef(null);
   let popupRefE = useRef(null);
@@ -41,7 +43,6 @@ function Signup(props) {
         style={{
           display: "flex",
           justifyContent: "center",
-
           flexDirection: "column",
           width: "50%",
           height: "100%",
@@ -87,7 +88,7 @@ function Signup(props) {
       <div
         ref={popupRef}
         className="mobileNumberPopUpcontainer"
-        style={{ display: "none" }}
+        style={{ display: toggle ? "none" : "block" }}
       >
         <div
           className="backArrow"
@@ -131,6 +132,7 @@ function Signup(props) {
               }}
               type="text"
               placeholder="Mobile Number"
+              maxLength="10"
             />
           </div>
         </div>
@@ -144,6 +146,11 @@ function Signup(props) {
               border: "none",
               background: "#e0e0e0",
               color: "white",
+            }}
+            onClick={() => {
+              toggle ? setToggle(false) : setToggle(true);
+              let OTP = Math.floor(Math.random() * 999999);
+              setOTP(OTP);
             }}
           >
             CONTINUE
@@ -208,6 +215,7 @@ function Signup(props) {
           </button>
         </div>
       </div>
+      <OTP toggle={toggle} setToggle={setToggle} OTP={AleatOTP} />
     </div>
   );
 }

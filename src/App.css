@@ -3,14 +3,6 @@
   padding: 0;
 }
 
-html {
-  min-height: 100% !important;
-}
-
-body {
-  min-height: 100vh !important;
-}
-
 img {
   width: 100%;
 }

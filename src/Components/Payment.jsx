@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import PaymentSuccess from "./paymentDonePage";
 function Payment(props) {
   let [Gpayment, setgPayment] = useState(true);
   let [ppayment, setpPayment] = useState(true);
@@ -9,6 +10,7 @@ function Payment(props) {
   let [cardataDate,setCarDatadate] = useState({});
   let [displayPayment, setdisplayPayment] = useState(true);
   let [displayPayment1, setdisplayPayment1] = useState(true);
+  let[toggle,setToggle] = useState(false);
 
 
   useEffect(() => {
@@ -273,6 +275,7 @@ function Payment(props) {
                       style={{
                         display: "none",
                         justifyContent: "space-between",
+                        alignItems:"center",
                         gap: "10px",
                         marginBottom: "25px",
                       }}
@@ -304,7 +307,6 @@ function Payment(props) {
                             }
                         }}
                       />
-                     <Link to='/paymentDone'>
                      <button
                         className="submitBtn1"
                         style={{
@@ -315,10 +317,13 @@ function Payment(props) {
                           borderRadius: "4px",
                           height:"100%"
                         }}
+
+                        onClick={()=>{
+                          toggle ?  setToggle(false) : setToggle(true)
+                        }}
                       >
                         VERIFY & PAY
                       </button>
-                     </Link>
                     </div>
                   </div>
                   <div style={{ borderBottom: "1px solid #cccccc" }}>
@@ -381,6 +386,7 @@ function Payment(props) {
                       style={{
                         display: "none",
                         justifyContent: "space-between",
+                        alignItems:"center",
                         gap: "10px",
                         marginBottom: "25px",
                       }}
@@ -413,7 +419,7 @@ function Payment(props) {
                           }
                         }}
                       />
-                     <Link to='/PaymentDone'>
+                     
                       <button
                           className="submitBtn2"
                           style={{
@@ -424,10 +430,12 @@ function Payment(props) {
                             borderRadius: "4px",
                             height:"100%"
                           }}
+                          onClick={()=>{
+                            toggle ?  setToggle(false) : setToggle(true)
+                          }}
                         >
                           VERIFY & PAY
                         </button>
-                     </Link>
                     </div>
                   </div>
                   <div>
@@ -491,6 +499,7 @@ function Payment(props) {
                       style={{
                         display: "none",
                         justifyContent: "space-between",
+                        alignItems:"center",
                         gap: "10px",
                         marginBottom: "25px",
                       }}
@@ -523,7 +532,6 @@ function Payment(props) {
                           }
                         }}
                       />
-                     <Link to="/PaymentDone">
                       <button
                           className="submitBtn3"
                           style={{
@@ -534,10 +542,13 @@ function Payment(props) {
                             borderRadius: "4px",
                             height:"100%"
                           }}
+                          onClick={()=>{
+                            toggle ?  setToggle(false) : setToggle(true)
+                          }}
                         >
                           VERIFY & PAY
                         </button>
-                     </Link>
+
                     </div>
                   </div>
                 </div>
@@ -735,7 +746,7 @@ function Payment(props) {
                 height: "20%",
                 top: "4px",
                 right: "23px",
-                marginBottom: "19px",
+                
               }}
             >
               <div
@@ -812,7 +823,7 @@ function Payment(props) {
                   style={{
                     width: "200px",
                     position: "relative",
-                    right: "-59px",
+                    right: "-42px",
                     top: "-41px",
                     overflow: "hidden",
                     marginBottom: "-40px",
@@ -945,6 +956,7 @@ function Payment(props) {
           </div>
         </div>
       </div>
+      <PaymentSuccess toggle={toggle} setToggle={setToggle}/>
     </div>
   );
 }

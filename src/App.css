@@ -99,6 +99,23 @@ p {
   padding-bottom: 10px;
 }
 
+.ul-prev {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  z-index: 2;
+}
+
+.ul-next {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+}
+
+.UlCarousel {
+  position: relative;
+}
+
 /* 992px devices devices */
 @media (max-width: 992px) {
   .carouselItem {
@@ -227,8 +244,26 @@ p {
     width: 100%;
   }
 
-  .UlCarousel_item {
-    width: 100% !important;
+  .UlCarousel_item:nth-child(3) {
+    width: 300% !important;
+  }
+
+  .UlCarousel_item:nth-child(2) {
+    visibility: hidden;
+  }
+
+  .UlCarousel_item:nth-child(4) {
+    visibility: hidden;
+  }
+
+  .ul-prev {
+    top: 45%;
+    left: 10px;
+  }
+
+  .ul-next {
+    top: 45%;
+    right: 10px;
   }
 
   .btn_nav nav p {

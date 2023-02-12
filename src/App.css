@@ -68,7 +68,7 @@ p {
 }
 
 .find-cars {
-  width: 32%;
+  width: 35%;
   margin: auto;
 }
 
@@ -88,6 +88,23 @@ p {
 .carouselInner {
   display: flex;
   transition: all 0.5s ease;
+}
+
+/* Bottom Navbar  */
+.btn_nav {
+  background: #383838;
+}
+
+.btn_nav nav {
+  justify-content: space-between;
+}
+
+.btn_nav p {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding-bottom: 10px;
 }
 
 /* 992px devices devices */
@@ -216,5 +233,18 @@ p {
 
   .find-cars {
     width: 100%;
+  }
+
+  .UlCarousel_item {
+    width: 100% !important;
+  }
+
+  .btn_nav nav p {
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+
+  .btn_nav nav {
+    gap: 10px;
   }
 }

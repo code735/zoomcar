@@ -3,12 +3,14 @@ import { useState,useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import CurrentDateTime from './CurrentDateTime'
 import LocationPopUp from './Pop-UP/LocationPopUp'
+import TimePopUp from './Pop-UP/TimePopUp'
 
 export default function FIndcars() {
     let [trip, settrip] = useState(false)
     let [showloc,setshowloc] = useState(false);
     let[locationLS,setLocationLS] = useState("");
     let [toggle,setToggle] = useState(true);
+    let [timetoggle,setTimetoggle] = useState(true);
 
     const styles = {
         gray:{
@@ -107,7 +109,14 @@ export default function FIndcars() {
         <div className="trip_location" onClick={()=>{
             getLocation();
             setToggle(false);
-        }} style={{display:"flex",alignItems:"center",background:"white",width:"100%",borderRadius:"5px"}}>
+        }} style={{
+            display:"flex",
+            alignItems:"center",
+            justifyContent:"center",
+            background:"white",
+            width:"100%",
+            borderRadius:"5px"
+            }}>
             <i className="bi bi-dot" style={{fontSize:"2rem",color:"#10a310"}}></i>
             <p style={
                 {
@@ -124,18 +133,28 @@ export default function FIndcars() {
             </p>
         </div>
         <LocationPopUp toggle={toggle} setToggle={setToggle}/>
+        <TimePopUp timetoggle={timetoggle} setTimetoggle={setTimetoggle}/>
         {/* trip dates */}
         <div className="trip_date" style={{
             width:"100%",
             background:"white",
             borderRadius:"5px",
-            padding:'12px'            
-        }}>
+            padding:'12px',
+            display:"flex",
+            alignItems:"center",
+            gap:'10px',
+            justifyContent:"center"       
+        }}
+        onClick={()=>{
+            setTimetoggle(false);
+        }}
+        >
+            <i className="bi bi-calendar"></i>
             <CurrentDateTime/>
         </div>
             
         <Link to="/products" className='find_cars_btn'>
-            <button style={{width:"100%",padding:"14px",border:'none',borderRadius:"5px",outline:"none",background:"#10a310",color:"white"}}>Find Cars</button>
+            <button style={{width:"100%",padding:"14px",border:'none',borderRadius:"5px",outline:"none",background:"#10a310",color:"white",margin:"auto"}}>Find Cars</button>
         </Link>
     </div>
   )

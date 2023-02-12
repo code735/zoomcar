@@ -1,9 +1,9 @@
 import Navbar from "./Components/Navbar";
 import "./App.css";
 import AllRoutes from "./Components/Routes/AllRoutes";
+// import PaymentSuccess from "./Components/paymentDonePage";
 import { useState, useEffect } from "react";
 import Slider from "./Components/Slider";
-
 function App() {
   const [menu, setmenu] = useState(false);
   return (

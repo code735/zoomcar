@@ -121,7 +121,7 @@ function Signup(props) {
             <span>+91</span>
           </div>
           <div className="input-box-tel">
-            <input
+            <input className="input-mobile-number"
               style={{
                 width: "40%",
                 height: "100%",
@@ -130,14 +130,29 @@ function Signup(props) {
                 outline: "none",
                 fontSize: "15px",
               }}
+              onInput={() => {
+                let mobileNumber =  document.querySelector(".input-mobile-number").value;
+
+                if(mobileNumber.length===10){
+                  document.querySelector(".submit-button-mobile").style.background="green";
+                  document.querySelector(".input-box-tel").style.border="2px solid green";
+                  
+                }
+                else{
+                  document.querySelector(".submit-button-mobile").style.background="#e0e0e0";
+                  document.querySelector(".input-box-tel").style.border="1px solid #e0e0e0";
+                }
+
+              }}
               type="text"
               placeholder="Mobile Number"
               maxLength="10"
             />
+
           </div>
         </div>
         <div className="submit-login-with-mobile">
-          <button
+          <button className="submit-button-mobile"
             style={{
               padding: "15px 200px",
               fontWeight: "bold",
@@ -149,8 +164,10 @@ function Signup(props) {
             }}
             onClick={() => {
               toggle ? setToggle(false) : setToggle(true);
-              let OTP = Math.floor(Math.random() * 999999);
+              let OTP = Math.floor(Math.random() * 999999).toString().padStart(6,"0");
               setOTP(OTP);
+              alert(`Your OTP is ${OTP}`)
+              
             }}
           >
             CONTINUE

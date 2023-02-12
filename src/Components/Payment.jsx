@@ -8,34 +8,33 @@ function Payment(props) {
   let [ppayment, setpPayment] = useState(true);
   let [patpayment, setpatPayment] = useState(true);
   let [carDatalocation, setCarDatalocation] = useState("");
-  let [cardataDate,setCarDatadate] = useState({});
-  let [carDetail,setcarDetail] = useState({});
+  let [cardataDate, setCarDatadate] = useState({});
+  let [carDetail, setcarDetail] = useState({});
   let [displayPayment, setdisplayPayment] = useState(true);
   let [displayPayment1, setdisplayPayment1] = useState(true);
-  let[toggle,setToggle] = useState(false);
-  let {total}= useContext(MainContext)
+  let [toggle, setToggle] = useState(false);
+  let { total } = useContext(MainContext);
+
+  const getDataLS = () => {
+    let storedValueCarData = JSON.parse(localStorage.getItem("productData"));
+    setcarDetail(storedValueCarData);
+  };
 
   useEffect(() => {
+    getDataLS();
     const storedValueLocation = localStorage.getItem("locationLS");
     const storedValueDate = JSON.parse(localStorage.getItem("timeLS"));
-    const storedValueCarData= JSON.parse(localStorage.getItem("productData"));
+
     if (storedValueLocation) {
       setCarDatalocation(storedValueLocation);
     }
     if (storedValueDate) {
       setCarDatadate(storedValueDate);
     }
-    if (storedValueCarData) {
-      setcarDetail(storedValueCarData);
-    }
   }, []);
-  console.log(carDetail);
-   
 
   return (
-    
     <div style={{ display: "flex", gap: "20px", margin: "50px" }}>
-
       <div style={{ width: "60%" }}>
         <h1 style={{ fontSize: "22px" }}>Select a Payment method</h1>
         <div
@@ -45,7 +44,6 @@ function Payment(props) {
             boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
             width: "100%",
           }}
-
         >
           <section
             className="left-Section"
@@ -281,7 +279,7 @@ function Payment(props) {
                       style={{
                         display: "none",
                         justifyContent: "space-between",
-                        alignItems:"center",
+                        alignItems: "center",
                         gap: "10px",
                         marginBottom: "25px",
                       }}
@@ -295,25 +293,27 @@ function Payment(props) {
                           height: "50px",
                           width: "240px",
                           outlineColor: "green",
-                          border: "1px solid #e0e0e0",  
+                          border: "1px solid #e0e0e0",
                           borderRadius: "4px",
                         }}
                         onInput={() => {
                           {
-                            let inputUPI = document.querySelector(".InpurUPI1").value;
-    
-                              if(inputUPI!=""){
-                                document.querySelector(".submitBtn1").style.background = "green";
-                               }
-                               else{
-                                document.querySelector(".submitBtn1").style.background = "#e0e0e0";
-                               }
-                              
-                           
+                            let inputUPI =
+                              document.querySelector(".InpurUPI1").value;
+
+                            if (inputUPI != "") {
+                              document.querySelector(
+                                ".submitBtn1"
+                              ).style.background = "green";
+                            } else {
+                              document.querySelector(
+                                ".submitBtn1"
+                              ).style.background = "#e0e0e0";
                             }
+                          }
                         }}
                       />
-                     <button
+                      <button
                         className="submitBtn1"
                         style={{
                           width: "150px",
@@ -321,11 +321,10 @@ function Payment(props) {
                           color: "white",
                           background: "#e0e0e0",
                           borderRadius: "4px",
-                          height:"100%"
+                          padding: "12px",
                         }}
-
-                        onClick={()=>{
-                          toggle ?  setToggle(false) : setToggle(true)
+                        onClick={() => {
+                          toggle ? setToggle(false) : setToggle(true);
                         }}
                       >
                         VERIFY & PAY
@@ -392,7 +391,7 @@ function Payment(props) {
                       style={{
                         display: "none",
                         justifyContent: "space-between",
-                        alignItems:"center",
+                        alignItems: "center",
                         gap: "10px",
                         marginBottom: "25px",
                       }}
@@ -425,23 +424,23 @@ function Payment(props) {
                           }
                         }}
                       />
-                     
+
                       <button
-                          className="submitBtn2"
-                          style={{
-                            width: "150px",
-                            border: "none",
-                            color: "white",
-                            background: "#e0e0e0",
-                            borderRadius: "4px",
-                            height:"100%"
-                          }}
-                          onClick={()=>{
-                            toggle ?  setToggle(false) : setToggle(true)
-                          }}
-                        >
-                          VERIFY & PAY
-                        </button>
+                        className="submitBtn2"
+                        style={{
+                          width: "150px",
+                          border: "none",
+                          color: "white",
+                          background: "#e0e0e0",
+                          borderRadius: "4px",
+                          padding: "12px",
+                        }}
+                        onClick={() => {
+                          toggle ? setToggle(false) : setToggle(true);
+                        }}
+                      >
+                        VERIFY & PAY
+                      </button>
                     </div>
                   </div>
                   <div>
@@ -505,7 +504,7 @@ function Payment(props) {
                       style={{
                         display: "none",
                         justifyContent: "space-between",
-                        alignItems:"center",
+                        alignItems: "center",
                         gap: "10px",
                         marginBottom: "25px",
                       }}
@@ -539,22 +538,21 @@ function Payment(props) {
                         }}
                       />
                       <button
-                          className="submitBtn3"
-                          style={{
-                            width: "150px",
-                            border: "none",
-                            color: "white",
-                            background: "#e0e0e0",
-                            borderRadius: "4px",
-                            height:"100%"
-                          }}
-                          onClick={()=>{
-                            toggle ?  setToggle(false) : setToggle(true)
-                          }}
-                        >
-                          VERIFY & PAY
-                        </button>
-
+                        className="submitBtn3"
+                        style={{
+                          width: "150px",
+                          border: "none",
+                          color: "white",
+                          background: "#e0e0e0",
+                          borderRadius: "4px",
+                          padding: "12px",
+                        }}
+                        onClick={() => {
+                          toggle ? setToggle(false) : setToggle(true);
+                        }}
+                      >
+                        VERIFY & PAY
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -576,7 +574,7 @@ function Payment(props) {
                       <b>Enter Card Details</b>
                     </div>
                     <div style={{ color: "#666666" }} className="Head-Amount">
-                      Amount:₹3014.0
+                      Amount:₹{total}.0
                     </div>
                   </div>
                   <div className="logo" style={{ width: "40px" }}>
@@ -592,7 +590,8 @@ function Payment(props) {
                     className="inputbox-card"
                     style={{ margin: "40px 0 40px 0" }}
                   >
-                    <input className="CardNumber"
+                    <input
+                      className="CardNumber"
                       type="text"
                       placeholder="Card Number"
                       maxLength={19}
@@ -605,35 +604,45 @@ function Payment(props) {
                         borderRadius: "5px",
                         paddingLeft: "10px",
                       }}
-                      onInput={()=>{
-                        {let cardNumber = document.querySelector(".CardNumber").value;
-                          let expiredate =  document.querySelector(".ExpireDate").value;
-                          let CVV =  document.querySelector(".CVV").value;
-                          if(cardNumber!="" && expiredate!="" && CVV!=""){
-                            document.querySelector(".SubmitPayment").style.background="green";
-                            document.querySelector(".SubmitPayment").style.color="white";
+                      onInput={() => {
+                        {
+                          let cardNumber =
+                            document.querySelector(".CardNumber").value;
+                          let expiredate =
+                            document.querySelector(".ExpireDate").value;
+                          let CVV = document.querySelector(".CVV").value;
+                          if (
+                            cardNumber != "" &&
+                            expiredate != "" &&
+                            CVV != ""
+                          ) {
+                            document.querySelector(
+                              ".SubmitPayment"
+                            ).style.background = "green";
+                            document.querySelector(
+                              ".SubmitPayment"
+                            ).style.color = "white";
+                          } else {
+                            document.querySelector(
+                              ".SubmitPayment"
+                            ).style.background = "#e0e0e0";
                           }
-                          else{
-                            document.querySelector(".SubmitPayment").style.background="#e0e0e0";
-                          }
-                         
-                      }
-                      
-                  }}
-                  onKeyDown={()=>{
-                    {
-                      let cardNumber = document.querySelector(".CardNumber");
-                      cardNumber = cardNumber.value.split(' ').join('');
+                        }
+                      }}
+                      onKeyDown={() => {
+                        {
+                          let cardNumber =
+                            document.querySelector(".CardNumber");
+                          cardNumber = cardNumber.value.split(" ").join("");
 
-                      let finalVal = cardNumber.match(/.{1,4}/g).join(' ');
-                      document.querySelector(".CardNumber").value = finalVal;
-
-
-                    }
-                  }}
+                          let finalVal = cardNumber.match(/.{1,4}/g).join(" ");
+                          document.querySelector(".CardNumber").value =
+                            finalVal;
+                        }
+                      }}
                     />
                   </div>
-  
+
                   <div
                     className="other-detail-card"
                     style={{
@@ -643,10 +652,11 @@ function Payment(props) {
                     }}
                   >
                     <div className="expire-and-cvv" style={{ width: "50%" }}>
-                      <input className="ExpireDate"
+                      <input
+                        className="ExpireDate"
                         placeholder="Expiry(MM/YY)"
                         maxLength={5}
-                      inputMode="numeric"
+                        inputMode="numeric"
                         style={{
                           width: "100%",
                           height: "60px",
@@ -654,7 +664,6 @@ function Payment(props) {
                           border: "1px solid #e0e0e0",
                           borderRadius: "5px",
                           paddingLeft: "10px",
-                          
                         }}
                         onInput={() => {
                           {
@@ -679,27 +688,30 @@ function Payment(props) {
                                 ".SubmitPayment"
                               ).style.background = "#e0e0e0";
                             }
-                        }
-                    }}
-                    onKeyDown={()=>{
-                      {
-                        let expiredate = document.querySelector(".ExpireDate");
-                        expiredate = expiredate.value.split('/').join('');
-  
-                        let finalVal = expiredate.match(/.{1,2}/g).join('/');
-                        document.querySelector(".ExpireDate").value = finalVal;
-  
-  
-                      }
-                    }}
+                          }
+                        }}
+                        onKeyDown={() => {
+                          {
+                            let expiredate =
+                              document.querySelector(".ExpireDate");
+                            expiredate = expiredate.value.split("/").join("");
+
+                            let finalVal = expiredate
+                              .match(/.{1,2}/g)
+                              .join("/");
+                            document.querySelector(".ExpireDate").value =
+                              finalVal;
+                          }
+                        }}
                       />
                     </div>
                     <div className="expire-and-cvv" style={{ width: "50%" }}>
-                      <input className="CVV"
+                      <input
+                        className="CVV"
                         type="password"
                         placeholder="CVV"
                         maxLength={3}
-                      inputMode="numeric"
+                        inputMode="numeric"
                         style={{
                           width: "100%",
                           height: "60px",
@@ -731,8 +743,8 @@ function Payment(props) {
                                 ".SubmitPayment"
                               ).style.background = "#e0e0e0";
                             }
-                        }
-                    }}
+                          }
+                        }}
                       />
                     </div>
                   </div>
@@ -752,7 +764,6 @@ function Payment(props) {
                 height: "20%",
                 top: "4px",
                 right: "23px",
-
               }}
             >
               <div
@@ -764,7 +775,8 @@ function Payment(props) {
                   height: "100%",
                 }}
               >
-                <button className="SubmitPayment"
+                <button
+                  className="SubmitPayment"
                   style={{
                     padding: "10px 40px 10px 40px",
                     marginRight: "10px",
@@ -775,9 +787,8 @@ function Payment(props) {
                     fontWeight: "500",
                     background: "#e0e0e0",
                   }}
-                 
                 >
-                  PAY ₹39515
+                  PAY ₹{total}
                 </button>
               </div>
             </footer>
@@ -802,7 +813,10 @@ function Payment(props) {
               }}
             >
               <div className="Car-Name" style={{ marginBottom: "5px" }}>
-                <b>Suzuki Ignis MT Petrol</b>
+                <b>
+                  {carDetail.car_data.brand} {carDetail.car_data.name}{" "}
+                  {carDetail.car_data.accessories[1]}
+                </b>
               </div>
               <div
                 className="Info-container"
@@ -814,7 +828,7 @@ function Payment(props) {
                     src="https://zoomcar-assets.zoomcar.com/images/original/2aceee9e84a7bf79ae8928ace92944abbac907d4.png?1584455088"
                     alt=""
                   />
-                  <span>Manual</span>
+                  <span>{carDetail.car_data.accessories[0]}</span>
                 </div>
                 <div className="Car-info">
                   <img
@@ -822,7 +836,7 @@ function Payment(props) {
                     src="https://zoomcar-assets.zoomcar.com/images/original/4c611ba1fb54d1e42553020d9022e5ab2dac14ea.png?1584455110"
                     alt=""
                   />
-                  <span>Petrol</span>
+                  <span>{carDetail.car_data.accessories[1]}</span>
                 </div>
                 <div
                   className="car-img"
@@ -835,10 +849,7 @@ function Payment(props) {
                     marginBottom: "-40px",
                   }}
                 >
-                  <img
-                    src="https://zoomcar-assets.zoomcar.com/photographs/original/7f4a674aa51af027c8f0017fe823fb34e5d90a05.png?1663873067"
-                    alt=""
-                  />
+                  <img src={carDetail.car_data.url_large} alt="" />
                 </div>
               </div>
             </div>
@@ -871,12 +882,17 @@ function Payment(props) {
                   </div>
                   <div className="time-and-date-containt">
                     <div className="time-date">{cardataDate.StartDate}</div>
-                    <div className="place-city" style={{ color: "#666666",
-                  maxHeight: "1.6em",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  whiteSpace: "nowrap",
-                  width: "140px"}}>
+                    <div
+                      className="place-city"
+                      style={{
+                        color: "#666666",
+                        maxHeight: "1.6em",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                        width: "140px",
+                      }}
+                    >
                       {carDatalocation}
                     </div>
                   </div>
@@ -920,11 +936,17 @@ function Payment(props) {
                   </div>
                   <div className="time-and-date-containt">
                     <div className="time-date">{cardataDate.EndDate}</div>
-                    <div className="place-city" style={{ color: "#666666", maxHeight: "1.6em",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  whiteSpace: "nowrap",
-                  width: "140px" }}>
+                    <div
+                      className="place-city"
+                      style={{
+                        color: "#666666",
+                        maxHeight: "1.6em",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                        width: "140px",
+                      }}
+                    >
                       {carDatalocation}
                     </div>
                   </div>
@@ -962,7 +984,7 @@ function Payment(props) {
           </div>
         </div>
       </div>
-      <PaymentSuccess toggle={toggle} setToggle={setToggle}/>
+      <PaymentSuccess toggle={toggle} setToggle={setToggle} />
     </div>
   );
 }

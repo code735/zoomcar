@@ -1,0 +1,105 @@
+import React, { useState } from 'react';
+import './PickupDateTime.css'
+
+function PickupDateTime() {
+  const [pickupDate, setPickupDate] = useState('');
+  const [pickupTime, setPickupTime] = useState('');
+  const [dropoffDate, setDropoffDate] = useState('');
+  const [dropoffTime, setDropoffTime] = useState('');
+
+  const handlePickupDateChange = (event) => {
+    setPickupDate(event.target.value);
+  };
+
+  const handlePickupTimeChange = (event) => {
+    setPickupTime(event.target.value);
+  };
+
+  const handleDropoffDateChange = (event) => {
+    setDropoffDate(event.target.value);
+  };
+
+  const handleDropoffTimeChange = (event) => {
+    setDropoffTime(event.target.value);
+  };
+
+  const formatDate = (date) => {
+    const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+    return new Date(date).toLocaleDateString('en-US', options);
+  };
+
+  const formatTime = (time) => {
+    return new Date(`1970-01-01T${time}:00`).toLocaleTimeString('en-US');
+  };
+
+  return (
+    <section style={{
+      display:"flex",
+      flexDirection:"column",
+      justifyContent:"center"
+    }}
+    className="dates"
+    >
+      <div style={{
+        display:"flex",
+        alignItems:"center",
+        gap:"20px",
+        justifyContent:"center",
+        margin:"20px",
+      }}>
+        <div style={{
+          background:"#10A310",
+          color:"white",
+          fontWeight:"bold",
+          padding:"10px",
+          borderRadius:"10px"
+        }}>
+          <h3>Pickup Date:</h3>
+          <div >
+            <input type="date" value={pickupDate} onChange={handlePickupDateChange} />
+            <input type="time" value={pickupTime} onChange={handlePickupTimeChange} />
+          </div>
+        </div>
+        
+        <div style={{
+          background:"#10A310",
+          color:"white",
+          fontWeight:"bold",
+          padding:"10px",
+          borderRadius:"10px"
+        }}>
+          <h3>Dropoff Date:</h3>
+          <div style={{
+            display:"flex",
+            gap:"20px",
+            alignItems:"center"
+          }}>
+            <input type="date" value={dropoffDate} onChange={handleDropoffDateChange} />
+            <input type="time" value={dropoffTime} onChange={handleDropoffTimeChange} />
+          </div>
+        </div>
+      </div>
+      <div style={{
+          background:"#10A310",
+          color:"white",
+          fontWeight:"bold",
+          padding:"10px",
+          borderRadius:"10px",
+          width:"49%",
+          margin:"auto",
+          fontSize:"1.2rem"
+        }}>
+        <ul>
+          <li>
+           <p>Selected Pickup Date: {pickupDate ? formatDate(pickupDate) : "Date not selected"}, {pickupTime ? formatTime(pickupTime) : "Time not selected"}</p>
+          </li>
+          <li>
+            <p>Selected Dropoff Date: {dropoffDate ? formatDate(dropoffDate) : "Date not selected"}, {dropoffTime ? formatTime(dropoffTime) : "Time not selected"}</p>
+          </li>
+        </ul>
+    </div>
+    </section>
+  );
+}
+
+export default PickupDateTime;

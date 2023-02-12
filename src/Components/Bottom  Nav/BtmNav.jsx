@@ -7,6 +7,11 @@ import './BtmNav.css';
 
 export default function BtmNav() {
     let [comp,setComp] = useState(<About/>);
+    const [selected, setSelected] = useState('About');
+
+    const handleClick = (name) => {
+      setSelected(name);
+    };  
 
   return (
     <div style={{
@@ -17,26 +22,54 @@ export default function BtmNav() {
         <div style={{
             paddingBottom:"2%"
         }} className='btn_nav' id='btm_id'>
-            <nav style={{
-                display:'flex',
-                alignItems:"center",
-            }}>
-                <p onClick={()=>{
-                    setComp(<About/>)
-                }}
-                >ABOUT US</p>
+            <nav style={{ display: 'flex', alignItems: 'center' }}>
+                <p
+                    onClick={() => {
+                        handleClick('About');
+                        setComp(<About/>)
+                    }}
+                    style={{
+                    borderBottom: selected === 'About' ? '2px solid white' : 'none',
+                    }}
+                >
+                    ABOUT US
+                </p>
 
-                <p onClick={()=>{
-                    setComp(<Blogs/>)
-                }}>BLOGS</p>
+                <p
+                    onClick={() => {
+                        handleClick('Blogs');
+                        setComp(<Blogs/>);
+                    }}
+                    style={{
+                    borderBottom: selected === 'Blogs' ? '2px solid white' : 'none',
+                    }}
+                >
+                    BLOGS
+                </p>
 
-                <p onClick={()=>{
-                    setComp(<Career/>)
-                }}>CAREERS</p>
+                <p
+                    onClick={() => {
+                        handleClick('Careers');
+                        setComp(<Career/>);
+                    }}
+                    style={{
+                    borderBottom: selected === 'Careers' ? '2px solid white' : 'none',
+                    }}
+                >
+                    CAREERS
+                </p>
 
-                <p onClick={()=>{
-                    setComp(<Help/>)
-                }}>HELP & SUPPORT</p>         
+                <p
+                    onClick={() => {
+                        handleClick('Help & Support');
+                        setComp(<Help/>);
+                    }}
+                    style={{
+                    borderBottom: selected === 'Help & Support' ? '2px solid white' : 'none',
+                    }}
+                >
+                    HELP & SUPPORT
+                </p>
             </nav>
         </div>
         {comp}

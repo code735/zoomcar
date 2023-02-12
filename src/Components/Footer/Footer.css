@@ -1,0 +1,95 @@
+.footer-new-location-operate-text {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: normal;
+    color: #fff;
+}
+
+@media screen and (min-width: 320px) {
+    .footer-new-location {
+        padding: 16px;
+        background: #666;
+    }
+
+    .footer-new-location-countries-india-cities-city-link {
+        color: white;
+        text-decoration: none;
+    }
+
+    .footer-new-location-countries-india-cities-city {
+        margin-top: 24px;
+        text-transform: capitalize;
+    }
+
+    .footer-new-location-countries-india-cities {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+    }
+
+    .footer-new-location-countries {
+        padding: 40px 0;
+    }
+
+    .footer-new-location-countries-other-block-country {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.4;
+        letter-spacing: normal;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    .footer-new-location-countries-other-block-city {
+        margin-top: 20px;
+        text-transform: capitalize;
+    }
+
+    .footer-new-location-countries-other {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        gap: 16px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .footer-new-location-operate-text {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.4;
+        letter-spacing: normal;
+        color: #fff;
+    }
+
+    .footer-new-location-countries-india-title {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.4;
+        letter-spacing: normal;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    .footer-new-location-countries-india-cities {
+        grid-template-columns: repeat(4, 25%);
+    }
+
+    .footer-new-location {
+        padding: 42px 84px;
+    }
+
+    .footer-new-location-countries-other-block-country {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.4;
+        letter-spacing: normal;
+        color: #fff;
+    }
+
+    .footer-new-location-countries-other {
+        grid-template-columns: repeat(4, 25%);
+        gap: 0px;
+    }
+
+}

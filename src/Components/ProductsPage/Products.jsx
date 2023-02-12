@@ -17,7 +17,7 @@ export default function Products() {
     setPage,
     totalPage,
     handleTotalPages,
-    locationNtime
+    locationNtime,
   } = useContext(MainContext);
   let [productData, setProductData] = useState([]);
   let [locationAndTime, setLocationAndTime] = useState({
@@ -56,53 +56,45 @@ export default function Products() {
   }, [sort, filter, page]);
 
   return (
-    <>
-      <Link to="/payment">
-        <button>To Payment</button>
-      </Link>
-
-      <section id="productSection" className="bg-light w-100 pt-4">
-        {isLoading ? (
-          <Loading />
-        ) : (
-          <div className={`bg-light d-flex ${ProductCSS.mainContainer}`}>
-            <div className="filterMenu">
-              <FilterMenu />
-            </div>
-
-            <div style={{ width: "70%" }}>
-              <div className={ProductCSS.productCardsContainer}>
-                <div className={`${ProductCSS.nameCity} border rounded`}>
-                  <div className={ProductCSS.nameCityDOT}></div>
-                  <p>{locationAndTime.location}</p>
-                </div>
-                <div className={`${ProductCSS.timeBar} border rounded`}>
-                  <div>
-                    <label> START DATE/TIME</label>
-                    <p>{locationAndTime.time.StartDate}</p>
-                  </div>
-
-                  <span>
-                    <i className="bi bi-arrow-right"></i>
-                  </span>
-
-                  <div>
-                    <label> END DATE/TIME</label>
-                    <p>{locationAndTime.time.EndDate}</p>
-                  </div>
-                </div>
-                {productData &&
-                  productData.map((element) => {
-                    return (
-                      <ProductCard key={element.id} productData={element} />
-                    );
-                  })}
-              </div>
-              <Pagination page={page} />
-            </div>
+    <section id="productSection" className="bg-light w-100 pt-4">
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className={`bg-light d-flex ${ProductCSS.mainContainer}`}>
+          <div className="filterMenu">
+            <FilterMenu />
           </div>
-        )}
-      </section>
-    </>
+
+          <div style={{ width: "70%" }}>
+            <div className={ProductCSS.productCardsContainer}>
+              <div className={`${ProductCSS.nameCity} border rounded`}>
+                <div className={ProductCSS.nameCityDOT}></div>
+                <p>{locationAndTime.location}</p>
+              </div>
+              <div className={`${ProductCSS.timeBar} border rounded`}>
+                <div>
+                  <label> START DATE/TIME</label>
+                  <p>{locationAndTime.time.StartDate}</p>
+                </div>
+
+                <span>
+                  <i className="bi bi-arrow-right"></i>
+                </span>
+
+                <div>
+                  <label> END DATE/TIME</label>
+                  <p>{locationAndTime.time.EndDate}</p>
+                </div>
+              </div>
+              {productData &&
+                productData.map((element) => {
+                  return <ProductCard key={element.id} productData={element} />;
+                })}
+            </div>
+            <Pagination page={page} />
+          </div>
+        </div>
+      )}
+    </section>
   );
 }

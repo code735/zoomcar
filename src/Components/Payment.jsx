@@ -1,6 +1,7 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { MainContext } from "./Context/MainContextProvider";
 import PaymentSuccess from "./paymentDonePage";
 function Payment(props) {
   let [Gpayment, setgPayment] = useState(true);
@@ -8,22 +9,27 @@ function Payment(props) {
   let [patpayment, setpatPayment] = useState(true);
   let [carDatalocation, setCarDatalocation] = useState("");
   let [cardataDate,setCarDatadate] = useState({});
+  let [carDetail,setcarDetail] = useState({});
   let [displayPayment, setdisplayPayment] = useState(true);
   let [displayPayment1, setdisplayPayment1] = useState(true);
   let[toggle,setToggle] = useState(false);
-
+  let {total}= useContext(MainContext)
 
   useEffect(() => {
     const storedValueLocation = localStorage.getItem("locationLS");
     const storedValueDate = JSON.parse(localStorage.getItem("timeLS"));
+    const storedValueCarData= JSON.parse(localStorage.getItem("productData"));
     if (storedValueLocation) {
       setCarDatalocation(storedValueLocation);
     }
     if (storedValueDate) {
       setCarDatadate(storedValueDate);
     }
+    if (storedValueCarData) {
+      setcarDetail(storedValueCarData);
+    }
   }, []);
-  console.log(cardataDate.StartDate)
+  console.log(carDetail);
    
 
   return (
@@ -193,7 +199,7 @@ function Payment(props) {
                       <b>Select a UPI App</b>
                     </div>
                     <div style={{ color: "#666666" }} className="Head-Amount">
-                      Amount:₹3014.0
+                      Amount:₹{total}.0
                     </div>
                   </div>
                   <div className="logo" style={{ width: "40px" }}>
@@ -746,7 +752,7 @@ function Payment(props) {
                 height: "20%",
                 top: "4px",
                 right: "23px",
-                
+
               }}
             >
               <div
@@ -949,7 +955,7 @@ function Payment(props) {
                   <b>Final Fare</b>
                 </div>
                 <div className="final-fare">
-                  <b>₹2,620</b>
+                  <b>₹{total}</b>
                 </div>
               </div>
             </div>

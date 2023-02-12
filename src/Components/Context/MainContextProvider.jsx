@@ -9,10 +9,7 @@ export default function MainContextProvider({ children }) {
   let [filter, setFilter] = useState("");
   let [page, setPage] = useState(1);
   let [totalPage, setTotalPage] = useState(0);
-  let [locationNtime,setLocationNtime] = useState({
-    location:"",
-    time:""
-  });
+  let [total, setTotal] = useState(0);
 
   function handleTotalPages(dataCount) {
     let totalPage = dataCount / 10;
@@ -35,8 +32,8 @@ export default function MainContextProvider({ children }) {
         totalPage,
         setTotalPage,
         handleTotalPages,
-        locationNtime,
-        setLocationNtime
+        total,
+        setTotal,
       }}
     >
       {children}

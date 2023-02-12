@@ -1,17 +1,39 @@
-import React from "react";
-
+import { useState, useRef, useEffect, useContext } from "react";
+import { MainContext } from "../Context/MainContextProvider";
+import { useNavigate } from "react-router-dom";
+import Target from "ol/events/Target";
 function OTP({ toggle, setToggle, OTP }) {
-  setTimeout(() => {
-    toggle ? alert(OTP) : console.log(OTP);
-  }, 1000);
+
+  const [otp, setOtp] = useState("");
+  
+
+  let { isAuth, setIsAuth } = useContext(MainContext);
+  const navigate = useNavigate();
+  // navigate("/");
+  
+  const handleOTP =(e)=>{
+      if(otp===OTP){
+        setIsAuth(true);
+        navigate("/");
+      }
+      else{
+        alert("Please Enter correct OTP");
+      }
+
+  }
+
+
   return (
     <div>
+    
       <div
         className="EmailPopUpcontainer"
+
         style={{
-          display: toggle ? "block" : "none"
-        }}//
+          display: toggle ? "block" : "none",
+        }} //
       >
+         
         <div
           className="backArrow"
           onClick={() => {
@@ -33,33 +55,53 @@ function OTP({ toggle, setToggle, OTP }) {
           </svg>
         </div>
         <div className="Enter-email-id">Enter 6-digit OTP</div>
-        <div className="email-input">
+        <div className="otp-input">
           <div className="input-box-email">
-            <input
+            <input className="enter-otp"
               style={{
                 width: "40%",
                 height: "100%",
                 padding: "10px",
                 border: "none",
                 outline: "none",
-                fontSize: "15px"
+                fontSize: "15px",
               }}
-              type="text"
+              value={otp}
+              onInput={(e)=>{
+                  setOtp(e.target.value)
+                    let otplength =  document.querySelector(".enter-otp").value;
+    
+                    if(otplength.length===6){
+                      document.querySelector(".submit-button-otp").style.background="green";
+                      document.querySelector(".otp-input").style.border="2px solid green";
+                      
+                    }
+                    else{
+                      document.querySelector(".submit-button-otp").style.background="#e0e0e0";
+                      document.querySelector(".otp-input").style.border="1px solid #e0e0e0";
+                    }
+    
+              }}
+              type="password"
               placeholder="OTP"
+              maxLength={6}
             />
           </div>
         </div>
         <div className="submit-login-with-email">
-          <button
+          <button 
+          className="submit-button-otp"
             style={{
+            
               padding: "15px 200px",
               fontWeight: "bold",
               boxShadow:
                 "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
               border: "none",
               background: "#e0e0e0",
-              color: "white"
+              color: "white",
             }}
+            onClick={handleOTP}
           >
             SUBMIT
           </button>

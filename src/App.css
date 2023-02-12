@@ -93,7 +93,10 @@ p {
 
 .btn_nav p {
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding-bottom: 10px;
 }
 
 /* 992px devices devices */

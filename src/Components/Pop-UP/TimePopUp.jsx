@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import LeftContainer from '../ProductDetails/LeftContainer';
-import Gmap from './Gmap';
+import PickupDateTime from './PickupDateTime';
 
 export default function TimePopUp({timetoggle,setTimetoggle}) {
 
@@ -136,6 +135,10 @@ export default function TimePopUp({timetoggle,setTimetoggle}) {
                 <p>{edate}</p>
               </div>
           </div>
+        </div>
+
+        <div>
+         <PickupDateTime/>
         </div>
     </div>
   )

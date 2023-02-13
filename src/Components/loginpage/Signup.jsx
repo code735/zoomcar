@@ -66,7 +66,7 @@ function Signup(props) {
           <div className="heading-login">Enter details to login/sign-up</div>
           <div className="option-menu">
             <div className="UserName">
-              <input type="text" placeholder="Enter User Name"  value={userName} onInput={handleusername}/>
+              <input type="text" placeholder="Enter User Name"  value={userName} onChange={handleusername}/>
             
             </div>
             <div className="option-mobile">
@@ -146,7 +146,6 @@ function Signup(props) {
                 if(mobileNumber.length===10){
                   document.querySelector(".submit-button-mobile").style.background="green";
                   document.querySelector(".input-box-tel").style.border="2px solid green";
-                  
                 }
                 else{
                   document.querySelector(".submit-button-mobile").style.background="#e0e0e0";

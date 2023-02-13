@@ -787,6 +787,9 @@ function Payment(props) {
                     fontWeight: "500",
                     background: "#e0e0e0",
                   }}
+                  onClick={() => {
+                    toggle ? setToggle(false) : setToggle(true);
+                  }}
                 >
                   PAY ₹{total}
                 </button>

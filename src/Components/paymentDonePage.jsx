@@ -1,6 +1,7 @@
 import React from "react";
 import "./PaymentSuccess.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const PaymentSuccess = ({toggle,setToggle}) => {
   return (
@@ -32,9 +33,11 @@ const PaymentSuccess = ({toggle,setToggle}) => {
             </p>
           </Col>
           <Col xs={12}>
-            <Button className="payment-success-button" href="/">
-              Return to Home
-            </Button>
+            <Link to="/">
+              <Button className="payment-success-button">
+                Return to Home
+              </Button>
+            </Link>
           </Col>
         </Row>
         </Container>

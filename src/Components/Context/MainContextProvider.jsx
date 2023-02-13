@@ -10,6 +10,7 @@ export default function MainContextProvider({ children }) {
   let [page, setPage] = useState(1);
   let [totalPage, setTotalPage] = useState(0);
   let [total, setTotal] = useState(0);
+  let [price, setPrice] = useState(0);
 
   function handleTotalPages(dataCount) {
     let totalPage = dataCount / 10;
@@ -34,6 +35,8 @@ export default function MainContextProvider({ children }) {
         handleTotalPages,
         total,
         setTotal,
+        price,
+        setPrice,
       }}
     >
       {children}

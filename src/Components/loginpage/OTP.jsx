@@ -14,7 +14,7 @@ function OTP({ toggle, setToggle, OTP }) {
   const handleOTP =(e)=>{
       if(otp===OTP){
         setIsAuth(true);
-        navigate("/");
+        navigate(-1);
       }
       else{
         alert("Please Enter correct OTP");

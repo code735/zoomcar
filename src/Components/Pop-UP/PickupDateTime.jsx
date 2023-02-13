@@ -1,11 +1,26 @@
 import React, { useState ,useEffect} from 'react';
 import './PickupDateTime.css'
+import TimePopUp from './TimePopUp';
 
-function PickupDateTime() {
+function PickupDateTime({setSdate,setEdate}) {
   const [pickupDate, setPickupDate] = useState('');
   const [pickupTime, setPickupTime] = useState('');
   const [dropoffDate, setDropoffDate] = useState('');
   const [dropoffTime, setDropoffTime] = useState('');
+
+    useEffect(() => {
+    
+    let startDate = formatDate(pickupDate) +","+formatTime(pickupTime);
+    let endDate = formatDate(dropoffDate) +","+formatTime(dropoffTime);
+
+    console.log(startDate);
+    console.log(endDate);
+
+    localStorage.setItem('timeLS', JSON.stringify({
+      StartDate: startDate.toLocaleString(),
+      EndDate: endDate.toLocaleString()
+    }));
+  }, [pickupDate, pickupTime, dropoffDate, dropoffTime]);
 
   const [total_hrs, setTotalHrs] = useState(0);
 

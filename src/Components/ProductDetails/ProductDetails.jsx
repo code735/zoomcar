@@ -7,7 +7,7 @@ import LeftContainer from "./LeftContainer";
 import Loading from "../ProductsPage/Loading";
 
 export default function ProductDetails() {
-  let { isLoading, setIsLoading } = useContext(MainContext);
+  let { isLoading, setIsLoading, setPrice } = useContext(MainContext);
   let [singleProduct, setSingleProduct] = useState({});
   let { id } = useParams();
 
@@ -22,9 +22,8 @@ export default function ProductDetails() {
       image_url: data.car_data.url,
       type: data.car_data.accessories[1],
       transmission: data.car_data.accessories[0],
-      price_p_hour: data.car_data.pricing.price_per_hour,
     };
-
+    setPrice(data.car_data.pricing.price_per_hour);
     localStorage.setItem("productData", JSON.stringify(obj));
     setIsLoading(false);
   }

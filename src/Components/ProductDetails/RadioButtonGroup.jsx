@@ -3,7 +3,7 @@ import { MainContext } from "../Context/MainContextProvider";
 import ProductDetailsCSS from "./ProductDetails.module.css";
 export default function RadioButtonGroup() {
   let [insurance, setInsurance] = useState(199);
-  let { total, setTotal } = useContext(MainContext);
+  let { total, setTotal, price } = useContext(MainContext);
 
   {
     let radioInput = document.querySelectorAll(".tripProtectionRadio");
@@ -33,11 +33,7 @@ export default function RadioButtonGroup() {
     let endDate = new Date(data.EndDate.slice(4));
 
     let totalHours = diff_hours(endDate, stDate);
-    let priceperHour = JSON.parse(
-      localStorage.getItem("productData")
-    ).price_p_hour;
-    let totalPrice =
-      priceperHour * totalHours + ConvenienceFee + Number(insurance);
+    let totalPrice = price * totalHours + ConvenienceFee + Number(insurance);
     setTotal(totalPrice);
   }
 

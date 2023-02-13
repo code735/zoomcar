@@ -1,8 +1,12 @@
 import React from "react";
 import logo from "../images/zoomcar_logo.png";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function Navbar({ menu, setmenu }) {
+
+  let temp = localStorage.getItem("userName");
+
   return (
     <div>
       <div
@@ -95,7 +99,19 @@ export default function Navbar({ menu, setmenu }) {
                   paddingRight: "20px",
                 }}
               >
-                <p style={{ margin: "0", fontSize: "1.1rem" }}>Login/Signup</p>
+                <p style={{ margin: "0", fontSize: "1.1rem" }}>{temp===null ?"Login/Signup" :<div style={{
+                  display:"flex",
+                  alignItems:"center",
+                  gap:"10px"
+                }}>
+                    <i style={{
+                      fontSize:"2rem"
+                    }} class="bi bi-person-circle"></i>
+                    <p style={{
+                      margin:"0"
+                    }}>{temp}</p>
+                  </div>}
+                </p>
               </div>
             </div>
           </Link>

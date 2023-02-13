@@ -1,11 +1,14 @@
 import React from "react";
 import logo from "../images/zoomcar_logo.png";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { useState } from "react";
+import {useContext} from 'react'
+import {MainContext} from './Context/MainContextProvider';
 
 export default function Navbar({ menu, setmenu }) {
 
   let temp = localStorage.getItem("userName");
+  let {isAuth,setIsAuth} = useContext(MainContext);
 
   return (
     <div>
@@ -87,7 +90,7 @@ export default function Navbar({ menu, setmenu }) {
             </div>
           </div>
 
-          <Link to="/login">
+          <Link to={isAuth==true ?  false :"/login"}>
             <div className="signup">
               <div
                 style={{
@@ -99,11 +102,12 @@ export default function Navbar({ menu, setmenu }) {
                   paddingRight: "20px",
                 }}
               >
-                <p style={{ margin: "0", fontSize: "1.1rem" }}>{temp===null ?"Login/Signup" :<div style={{
+                <p style={{ margin: "0", fontSize: "1.1rem" }}>{isAuth===false ?"Login/Signup" :<div style={{
                   display:"flex",
                   alignItems:"center",
                   gap:"10px"
-                }}>
+                }}
+                >
                     <i style={{
                       fontSize:"2rem"
                     }} class="bi bi-person-circle"></i>

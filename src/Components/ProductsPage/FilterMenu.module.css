@@ -7,6 +7,16 @@
 .gapGrid {
   gap: 0.5rem;
 }
+
+.sortMenuGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .Pevent {
   cursor: pointer;
+}
+
+[aria-disabled="true"] {
+  opacity: 0.5;
 }

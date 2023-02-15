@@ -5,19 +5,21 @@ export default function RadioButtonGroup() {
   let [insurance, setInsurance] = useState(199);
   let { total, setTotal, price } = useContext(MainContext);
 
-  {
-    let radioInput = document.querySelectorAll(".tripProtectionRadio");
-    for (let i = 0; i < radioInput.length; i++) {
-      radioInput[i].addEventListener("click", (e) => {
-        for (let j = 0; j < radioInput.length; j++) {
-          e.target.value === radioInput[j].value
-            ? (radioInput[j].checked = true)
-            : (radioInput[j].checked = false);
-        }
-        setInsurance(e.target.value);
-      });
+  useEffect(() => {
+    {
+      let radioInput = document.querySelectorAll(".tripProtectionRadio");
+      for (let i = 0; i < radioInput.length; i++) {
+        radioInput[i].addEventListener("click", (e) => {
+          for (let j = 0; j < radioInput.length; j++) {
+            e.target.value === radioInput[j].value
+              ? (radioInput[j].checked = true)
+              : (radioInput[j].checked = false);
+          }
+          setInsurance(e.target.value);
+        });
+      }
     }
-  }
+  });
 
   function diff_hours(dt2, dt1) {
     var diff = (dt2.getTime() - dt1.getTime()) / 1000;

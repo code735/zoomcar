@@ -1,6 +1,7 @@
 import React from "react";
 import OTP from "./OTP";
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./Signup.css";
 function Signup(props) {
@@ -12,6 +13,8 @@ function Signup(props) {
   let popupRef = useRef(null);
   let continerRef = useRef(null);
   let popupRefE = useRef(null);
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     let popup1 = popupRef.current;
@@ -66,7 +69,7 @@ function Signup(props) {
           <div className="heading-login">Enter details to login/sign-up</div>
           <div className="option-menu">
             <div className="UserName">
-              <input type="text" placeholder="Enter User Name"  value={userName} onChange={handleusername}/>
+              <input type="text" placeholder="Enter User Name"  value={userName} onInput={handleusername}/>
             
             </div>
             <div className="option-mobile">
@@ -146,6 +149,7 @@ function Signup(props) {
                 if(mobileNumber.length===10){
                   document.querySelector(".submit-button-mobile").style.background="green";
                   document.querySelector(".input-box-tel").style.border="2px solid green";
+                  
                 }
                 else{
                   document.querySelector(".submit-button-mobile").style.background="#e0e0e0";

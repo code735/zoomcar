@@ -15,7 +15,7 @@ export default function ProductCard({ productData }) {
   } = productData;
 
   return (
-    <Link to={`/products/${id}`}>
+    <Link to={`/cars/${id}`}>
       <div className={ProductCardCSS.productCard}>
         <div
           className="imageCar"

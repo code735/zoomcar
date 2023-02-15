@@ -27,9 +27,9 @@ export default function FilterMenu() {
         Sort By
       </p>
       <div className="sortMenu mb-1">
-        <div className={`row mb-2 ${FilterCSS.gapGrid}`}>
+        <div className={`mb-2 ${FilterCSS.sortMenuGrid} ${FilterCSS.gapGrid}`}>
           <div
-            className={`border border-secondary rounded text-center col ${FilterCSS.Pevent}`}
+            className={`border p-2 border-secondary rounded text-center ${FilterCSS.Pevent}`}
             onClick={(e) => {
               setSort("?_sort");
             }}
@@ -38,7 +38,7 @@ export default function FilterMenu() {
             <div className={FilterCSS["fs_11px"]}>Relevance</div>
           </div>
           <div
-            className={`border border-secondary rounded text-center col ${FilterCSS.Pevent}`}
+            className={`border p-2 border-secondary rounded text-center ${FilterCSS.Pevent}`}
             onClick={(e) => {
               setSort("?_sort=car_data.pricing.price_per_hour&_order=asc");
             }}
@@ -47,7 +47,7 @@ export default function FilterMenu() {
             <div className={FilterCSS["fs_11px"]}>Low to High</div>
           </div>
           <div
-            className={`border border-secondary rounded text-center col ${FilterCSS.Pevent}`}
+            className={`border p-2 border-secondary rounded text-center ${FilterCSS.Pevent}`}
             onClick={(e) => {
               setSort("?_sort=car_data.pricing.price_per_hour&_order=desc");
             }}
@@ -56,34 +56,34 @@ export default function FilterMenu() {
             <div className={FilterCSS["fs_11px"]}>High to Low</div>
           </div>
           <div
-            className={`border border-secondary rounded text-center col ${FilterCSS.Pevent}`}
+            className={`border p-2 border-secondary rounded text-center ${FilterCSS.Pevent}`}
           >
             <i class="bi bi-star"></i>
             <div className={FilterCSS["fs_11px"]}>Best Rated</div>
           </div>
         </div>
 
-        <div className={`row mb-2 ${FilterCSS.gapGrid}`}>
+        <div className={`mb-2 ${FilterCSS.sortMenuGrid} ${FilterCSS.gapGrid}`}>
           <div
-            className={`border border-secondary rounded text-center col ${FilterCSS.Pevent}`}
+            className={`border p-2 border-secondary rounded text-center ${FilterCSS.Pevent}`}
           >
             <i class="bi bi-geo-alt"></i>
             <div className={FilterCSS["fs_11px"]}>Distance</div>
           </div>
           <div
-            className={`border border-secondary rounded text-center col ${FilterCSS.Pevent}`}
+            className={`border p-2 border-secondary rounded text-center ${FilterCSS.Pevent}`}
           >
             <i class="bi bi-car-front"></i>
             <div className={FilterCSS["fs_11px"]}>Car Age</div>
           </div>
           <div
-            className={`border border-secondary rounded text-center col ${FilterCSS.Pevent}`}
+            className={`border p-2 border-secondary rounded text-center ${FilterCSS.Pevent}`}
           >
             <i class="bi bi-check-circle"></i>
             <div className={FilterCSS["fs_11px"]}>Kms Driven</div>
           </div>
           <div
-            className={`border border-secondary rounded text-center col ${FilterCSS.Pevent}`}
+            className={`border p-2 border-secondary rounded text-center ${FilterCSS.Pevent}`}
           >
             <i class="bi bi-check-circle"></i>
             <div className={FilterCSS["fs_11px"]}>Popularity</div>
@@ -132,9 +132,7 @@ export default function FilterMenu() {
         <div className={`row ${FilterCSS.gapGrid}`}>
           <div
             className={`border border-secondary rounded text-center col ${FilterCSS.Pevent}`}
-            onClick={() => {
-              setFilter("&car_data.accessories.2=4%20Seats");
-            }}
+            aria-disabled="true"
           >
             <i style={{ fontSize: "18px", marginTop: "5px" }}>
               <IoCarOutline />
@@ -201,9 +199,7 @@ export default function FilterMenu() {
           </div>
           <div
             className={`border border-secondary rounded text-center col ${FilterCSS.Pevent}`}
-            onClick={() => {
-              setFilter("&car_data.accessories.1=CNG");
-            }}
+            aria-disabled="true"
           >
             <img
               style={{ width: "24px" }}

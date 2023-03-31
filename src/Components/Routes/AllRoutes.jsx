@@ -11,15 +11,15 @@ export default function AllRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Homepage />} />
-      <Route path="/products" element={<Products />} />
       <Route
-        path="/products/:id"
+        path="/cars/:id"
         element={
           <PrivateRoute>
             <ProductDetails />
           </PrivateRoute>
         }
       />
+      <Route path="/products/:page" element={<Products />} />
       <Route path="/payment" element={<Payment />} />
       <Route path="/paymentDone" element={<PaymentSuccess />} />
       <Route path="/login" element={<Signup />} />

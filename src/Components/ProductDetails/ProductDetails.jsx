@@ -9,12 +9,14 @@ import Loading from "../ProductsPage/Loading";
 export default function ProductDetails() {
   let { isLoading, setIsLoading, setPrice } = useContext(MainContext);
   let [singleProduct, setSingleProduct] = useState({});
-  let { id } = useParams();
+  let { page, id } = useParams();
 
   async function getData(url) {
+    console.log(page, id);
     setIsLoading(true);
     let fetchData = await fetch(url);
     let data = await fetchData.json();
+    console.log(data);
     setSingleProduct(data);
     let obj = {
       name: data.car_data.name,
